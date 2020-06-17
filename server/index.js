@@ -53,9 +53,9 @@ massive({
 })
   .then((db) => {
     app.set("db", db);
-    console.log("The DB is connected.");
+    console.log("The database is connected.");
     app.listen(SERVER_PORT, () =>
-      console.log(`The server is listening on port ${SERVER_PORT}.`)
+      console.log(`The server is listening (port ${SERVER_PORT}).`)
     );
   })
   .catch((err) => console.log(err));

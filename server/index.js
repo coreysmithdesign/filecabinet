@@ -17,10 +17,31 @@ app.use(
   })
 );
 
-// endpoints
+// endpoints - authentication
 app.post("/api/auth/register", authCtrl.register);
 app.post("/api/auth/login", authCtrl.login);
 app.post("/api/auth/logout", authCtrl.logout);
+
+// endpoints - documents
+app.get("/api/documents");
+app.post("/api/documents/");
+app.get("/api/document/:id");
+app.put("/api/document/:id");
+app.delete("/api/document/:id");
+
+// endpoints - employees
+app.get("/api/employees");
+app.post("/api/employees/");
+app.get("/api/employee/:id");
+app.put("/api/employee/:id");
+app.delete("/api/employee/:id");
+
+// endpoints - businesses
+app.get("/api/businesses");
+app.post("/api/businesses/");
+app.get("/api/business/:id");
+app.put("/api/business/:id");
+app.delete("/api/business/:id");
 
 // massive
 massive({

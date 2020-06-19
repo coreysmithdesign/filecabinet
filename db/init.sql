@@ -9,7 +9,7 @@ create table users (
 	id serial primary key,
 	username varchar(50) not null unique,
 	password text not null,
-	email varchar(50) not null unique,
+	email varchar(50) not null,
 	full_name varchar(50),
 	business_name varchar(50),
  	is_business boolean,

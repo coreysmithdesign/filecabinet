@@ -46,7 +46,7 @@ module.exports = {
 
     // if so, proceed with logging in
     if (!user[0]) {
-      return res.status(404).send("You must be new here.");
+      return res.status(404).send("Nope. This login doesn't check out.");
     } else {
       const authenticated = bcrypt.compareSync(password, user[0].password);
       if (authenticated) {

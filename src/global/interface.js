@@ -14,6 +14,49 @@ library.add(fas, faCabinetFiling, faFolder, faFolders, faPlusCircle);
 
 export const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
+  /*--------------------------------------------------------------
+  # Typography
+  --------------------------------------------------------------*/
+  /* Inter typeface https://rsms.me/inter/ */
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: fallback;
+    src: url("fonts/Inter/Inter-Regular.woff2") format("woff2"),
+      url("fonts/Inter/Inter-Regular.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 400;
+    font-display: fallback;
+    src: url("fonts/Inter/Inter-Italic.woff2") format("woff2"),
+      url("fonts/Inter/Inter-Italic.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-display: fallback;
+    src: url("fonts/Inter/Inter-Bold.woff2") format("woff2"),
+      url("fonts/Inter/Inter-Bold.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 700;
+    font-display: fallback;
+    src: url("fonts/Inter/Inter-BoldItalic.woff2") format("woff2"),
+      url("fonts/Inter/Inter-BoldItalic.woff") format("woff");
+  }
+
+  /*--------------------------------------------------------------
+  # Global styles
+  --------------------------------------------------------------*/
   
   html {
     box-sizing: border-box;
@@ -32,12 +75,11 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    color: #eee;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
+    background: #F4F4F6;
+    color: #505763;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: "Inter", sans-serif;
   }
   
   code {
@@ -58,9 +100,19 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const size = {
+  sm: "400px",
+  md: "600px",
+  lg: "800px",
+  xl: "1000px",
+};
+
 export const color = {
   brand_orange: "#FF5C00",
   brand_blue: "#28629B",
+  text: "#505763",
+  link: "#505763",
+  link_hover: "#505763",
   shade_100: "#FFFFFF",
   shade_200: "#F8FAFC",
   shade_300: "#F1F5F8",
@@ -79,12 +131,13 @@ export const shadow = {
 // Icon Set via FontAwesome https://fontawesome.com/icons?d=gallery
 export const icon = {
   cabinet: <FontAwesomeIcon icon={"cabinet-filing"} />,
-  profile: <FontAwesomeIcon icon={"user-circle"} />,
-  add: <FontAwesomeIcon icon={"plus-circle"} />,
+  profile: <FontAwesomeIcon icon={"user"} />,
+  add: <FontAwesomeIcon icon={"plus"} />,
   key: <FontAwesomeIcon icon={"key"} />,
   file: <FontAwesomeIcon icon={"file"} />,
   files: <FontAwesomeIcon icon={"copy"} />,
   folder: <FontAwesomeIcon icon={"folder"} />,
   folders: <FontAwesomeIcon icon={"folders"} />,
   chevron_left: <FontAwesomeIcon icon={"chevron-left"} />,
+  caret_down: <FontAwesomeIcon icon={"caret-down"} />,
 };

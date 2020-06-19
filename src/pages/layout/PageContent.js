@@ -2,14 +2,20 @@ import React from "react";
 import styled from "styled-components";
 
 const PageContentGroup = styled.div`
-  height: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  display: flex;
   @media (min-width: 750px) {
-    display: flex;
+    flex-direction: row;
   }
 `;
 
 export default function PageContent(props) {
-  return <PageContentGroup>{props.children}</PageContentGroup>;
+  return (
+    <PageContentGroup className="PageContentGroup">
+      {props.children}
+    </PageContentGroup>
+  );
 }

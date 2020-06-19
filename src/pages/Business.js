@@ -4,7 +4,7 @@ import PageHeader from "./layout/PageHeader";
 import PageContent from "./layout/PageContent";
 import PageMain from "./layout/PageMain";
 import PageAside from "./layout/PageAside";
-import Card from "./layout/Card";
+import Card from "./components/Card";
 
 export default function Business() {
   return (

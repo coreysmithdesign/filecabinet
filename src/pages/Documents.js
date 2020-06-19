@@ -30,6 +30,18 @@ export default function Documents() {
               <TableCell>Corey Smith</TableCell>
               <TableCell>notes and stuff can go here.</TableCell>
             </TableRowLink>
+            <TableRowLink to="/documents/1">
+              <TableCell>June 20th, 2020</TableCell>
+              <TableCell>Job Application</TableCell>
+              <TableCell>Corey Smith</TableCell>
+              <TableCell>notes and stuff can go here.</TableCell>
+            </TableRowLink>
+            <TableRowLink to="/documents/1">
+              <TableCell>June 20th, 2020</TableCell>
+              <TableCell>Job Application</TableCell>
+              <TableCell>Corey Smith</TableCell>
+              <TableCell>notes and stuff can go here.</TableCell>
+            </TableRowLink>
           </Table>
         </PageMain>
       </PageContent>

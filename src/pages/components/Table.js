@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { color } from "../../global/interface";
 
 const TableGroup = styled.div`
   width: 100%;
@@ -46,8 +47,25 @@ export const TableRowLink = styled(Link)`
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: ${color.text};
+  transition: all 0.1s;
+  &&:hover {
+    text-decoration: none;
+    color: white;
+    background-color: #29303b;
+  }
+  :visited {
+    text-decoration: none;
+    color: ${color.text};
+  }
   &&:nth-of-type(odd) {
     background-color: #ebebf1;
+  }
+  &&:nth-of-type(odd):hover {
+    text-decoration: none;
+    color: white;
+    background-color: #29303b;
   }
   @media (min-width: 600px) {
     padding: 0;

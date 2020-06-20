@@ -27,19 +27,19 @@ export default function Business() {
               <TableCell>Name</TableCell>
               <TableCell>Note</TableCell>
             </TableHeader>
-            <TableRowLink to="/documents/1">
+            <TableRowLink to="/businesses/1/">
               <TableCell>June 20th, 2020</TableCell>
               <TableCell>Invoice</TableCell>
               <TableCell>Jerry McDaniels</TableCell>
               <TableCell>notes and stuff can go here.</TableCell>
             </TableRowLink>
-            <TableRowLink to="/documents/1">
+            <TableRowLink to="/businesses/1/">
               <TableCell>June 20th, 2020</TableCell>
               <TableCell>Statement</TableCell>
               <TableCell>George Henry</TableCell>
               <TableCell>notes and stuff can go here.</TableCell>
             </TableRowLink>
-            <TableRowLink to="/documents/1">
+            <TableRowLink to="/businesses/1/">
               <TableCell>June 20th, 2020</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>June Anderson</TableCell>

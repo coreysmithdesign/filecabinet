@@ -3,6 +3,7 @@ import Layout from "./layout/Layout";
 import PageHeader from "./layout/PageHeader";
 import PageContent from "./layout/PageContent";
 import PageMain from "./layout/PageMain";
+import Search from "./components/Search";
 import Table, {
   TableHeader,
   TableRowLink,
@@ -12,7 +13,9 @@ import Table, {
 export default function Documents() {
   return (
     <Layout>
-      <PageHeader title="Documents"></PageHeader>
+      <PageHeader title="Documents">
+        <Search />
+      </PageHeader>
       <PageContent>
         <PageMain>
           <Table>

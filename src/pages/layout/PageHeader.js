@@ -44,6 +44,10 @@ const PageLinkIcon = styled.span`
   bottom: 2px;
 `;
 
+const PageActions = styled.div`
+  margin-left: auto;
+`;
+
 export default function PageHeader(props) {
   return (
     <PageHeaderGroup className="pageHeaderGroup">
@@ -56,7 +60,7 @@ export default function PageHeader(props) {
           props.title
         )}
       </PageTitle>
-      {props.children}
+      <PageActions>{props.children}</PageActions>
     </PageHeaderGroup>
   );
 }

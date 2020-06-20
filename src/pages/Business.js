@@ -4,7 +4,18 @@ import PageHeader from "./layout/PageHeader";
 import PageContent from "./layout/PageContent";
 import PageMain from "./layout/PageMain";
 import PageAside from "./layout/PageAside";
-import Card from "./components/Card";
+import Card, {
+  CardTitle,
+  CardLabel,
+  CardList,
+  CardListItem,
+  CardInfo,
+} from "./components/Card";
+import Table, {
+  TableHeader,
+  TableRowLink,
+  TableCell,
+} from "./components/Table";
 
 export default function Business() {
   return (
@@ -13,10 +24,37 @@ export default function Business() {
       <PageContent>
         <PageAside>
           <Card>
-            <h1>This</h1>
+            <CardTitle>This</CardTitle>
           </Card>
         </PageAside>
-        <PageMain>An individual business goes here</PageMain>
+        <PageMain>
+          <Table>
+            <TableHeader>
+              <TableCell>Date</TableCell>
+              <TableCell>Document</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Note</TableCell>
+            </TableHeader>
+            <TableRowLink to="/documents/1">
+              <TableCell>June 20th, 2020</TableCell>
+              <TableCell>Invoice</TableCell>
+              <TableCell>Jerry McDaniels</TableCell>
+              <TableCell>notes and stuff can go here.</TableCell>
+            </TableRowLink>
+            <TableRowLink to="/documents/1">
+              <TableCell>June 20th, 2020</TableCell>
+              <TableCell>Statement</TableCell>
+              <TableCell>George Henry</TableCell>
+              <TableCell>notes and stuff can go here.</TableCell>
+            </TableRowLink>
+            <TableRowLink to="/documents/1">
+              <TableCell>June 20th, 2020</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>June Anderson</TableCell>
+              <TableCell>notes and stuff can go here.</TableCell>
+            </TableRowLink>
+          </Table>
+        </PageMain>
       </PageContent>
     </Layout>
   );

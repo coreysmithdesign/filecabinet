@@ -5,11 +5,9 @@ import PageContent from "./layout/PageContent";
 import PageMain from "./layout/PageMain";
 import Table, {
   TableHeader,
-  TableRow,
   TableRowLink,
   TableCell,
 } from "./components/Table";
-import { Link } from "react-router-dom";
 
 export default function Documents() {
   return (

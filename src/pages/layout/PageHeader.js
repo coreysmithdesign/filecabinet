@@ -18,13 +18,13 @@ const PageHeaderGroup = styled.div`
 
 const PageTitle = styled.h2`
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 400;
 `;
 
 const PageLink = styled(Link)`
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 400;
   text-decoration: none;
   :hover {
@@ -39,7 +39,7 @@ const PageLink = styled(Link)`
 
 const PageLinkIcon = styled.span`
   font-weight: 100;
-  font-size: 1rem;
+  font-size: 0.75rem;
   position: relative;
   bottom: 2px;
 `;

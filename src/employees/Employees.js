@@ -1,13 +1,9 @@
 import React from "react";
-import Layout from "./layout/Layout";
-import PageHeader from "./layout/PageHeader";
-import PageContent from "./layout/PageContent";
-import PageMain from "./layout/PageMain";
-import Table, {
-  TableHeader,
-  TableRowLink,
-  TableCell,
-} from "./components/Table";
+import Layout from "../layout/Layout";
+import PageHeader from "../layout/PageHeader";
+import PageContent from "../layout/PageContent";
+import PageMain from "../layout/PageMain";
+import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 
 export default function Employees() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Layout from "./layout/Layout";
-import PageContent from "./layout/PageContent";
+import Layout from "../layout/Layout";
+import PageContent from "../layout/PageContent";
 
 const Main = styled.main`
   width: 100%;

@@ -1,5 +1,5 @@
 import React from "react";
-import { GlobalStyle } from "./global/interface";
+import { GlobalStyle } from "./global/Interface";
 import routes from "./routes";
 
 function App() {

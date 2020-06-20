@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { icon } from "../global/interface";
+import { icon } from "../../global/Interface";
 
 const LayoutGroup = styled.div`
   display: flex;

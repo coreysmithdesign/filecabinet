@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Layout from "./Layout";
-import { icon } from "../global/interface";
+import Layout from "./layout/Layout";
+import { icon } from "../global/Interface";
 import { Link } from "react-router-dom";
 
 const Cover = styled.div`

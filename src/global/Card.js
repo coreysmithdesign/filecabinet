@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const CardGroup = styled.div`
+export const Card = styled.div`
   border: 1px solid #e7e7e7;
   background-color: #fbfbfb;
   padding: 1rem;
@@ -39,6 +38,7 @@ export const CardInfo = styled.p`
   margin: 0;
 `;
 
-export default function Card(props) {
-  return <CardGroup>{props.children}</CardGroup>;
-}
+export const CardGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+`;

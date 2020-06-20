@@ -1,9 +1,8 @@
-import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { color } from "../../global/interface";
+import { color } from "./Interface";
 
-const TableGroup = styled.div`
+export const Table = styled.div`
   width: 100%;
   margin: 0;
   padding: 0;
@@ -85,7 +84,3 @@ export const TableCell = styled.span`
     white-space: nowrap;
   }
 `;
-
-export default function Table(props) {
-  return <TableGroup>{props.children}</TableGroup>;
-}

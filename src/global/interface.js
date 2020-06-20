@@ -14,49 +14,6 @@ library.add(fas, faCabinetFiling, faFolder, faFolders, faPlusCircle);
 
 export const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
-  /*--------------------------------------------------------------
-  # Typography
-  --------------------------------------------------------------*/
-  /* Inter typeface https://rsms.me/inter/ */
-  @font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-display: fallback;
-    src: url("fonts/Inter/Inter-Regular.woff2") format("woff2"),
-      url("fonts/Inter/Inter-Regular.woff") format("woff");
-  }
-
-  @font-face {
-    font-family: "Inter";
-    font-style: italic;
-    font-weight: 400;
-    font-display: fallback;
-    src: url("fonts/Inter/Inter-Italic.woff2") format("woff2"),
-      url("fonts/Inter/Inter-Italic.woff") format("woff");
-  }
-
-  @font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 700;
-    font-display: fallback;
-    src: url("fonts/Inter/Inter-Bold.woff2") format("woff2"),
-      url("fonts/Inter/Inter-Bold.woff") format("woff");
-  }
-
-  @font-face {
-    font-family: "Inter";
-    font-style: italic;
-    font-weight: 700;
-    font-display: fallback;
-    src: url("fonts/Inter/Inter-BoldItalic.woff2") format("woff2"),
-      url("fonts/Inter/Inter-BoldItalic.woff") format("woff");
-  }
-
-  /*--------------------------------------------------------------
-  # Global styles
-  --------------------------------------------------------------*/
   
   html {
     box-sizing: border-box;
@@ -140,4 +97,6 @@ export const icon = {
   folders: <FontAwesomeIcon icon={"folders"} />,
   chevron_left: <FontAwesomeIcon icon={"chevron-left"} />,
   caret_down: <FontAwesomeIcon icon={"caret-down"} />,
+  check: <FontAwesomeIcon icon={"check"} />,
+  times: <FontAwesomeIcon icon={"times"} />,
 };

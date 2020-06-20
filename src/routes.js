@@ -3,13 +3,13 @@ import { Switch, Route } from "react-router";
 import Welcome from "./authentication/Welcome";
 import Login from "./authentication/Login";
 import Register from "./authentication/Register";
-import Documents from "./pages/Documents";
-import Document from "./pages/Document";
-import Employees from "./pages/Employees";
-import Employee from "./pages/Employee";
-import Businesses from "./pages/Businesses";
-import Business from "./pages/Business";
-import Profile from "./pages/Profile";
+import Documents from "./documents/Documents";
+import Document from "./documents/Document";
+import Employees from "./employees/Employees";
+import Employee from "./employees/Employee";
+import Businesses from "./businesses/Businesses";
+import Business from "./businesses/Business";
+import Profile from "./profile/Profile";
 
 export default (
   <Switch>

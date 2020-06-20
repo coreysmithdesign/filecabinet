@@ -1,24 +1,22 @@
 import React from "react";
-import Layout from "./layout/Layout";
-import PageHeader from "./layout/PageHeader";
-import PageContent from "./layout/PageContent";
-import PageMain from "./layout/PageMain";
-import PageAside from "./layout/PageAside";
-import Card, { CardTitle } from "./components/Card";
-import Table, {
-  TableHeader,
-  TableRowLink,
-  TableCell,
-} from "./components/Table";
+import Layout from "../layout/Layout";
+import PageHeader from "../layout/PageHeader";
+import PageContent from "../layout/PageContent";
+import PageMain from "../layout/PageMain";
+import PageAside from "../layout/PageAside";
+import { Card, CardTitle, CardLabel, CardInfo } from "../global/Card";
+import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 
-export default function Employee() {
+export default function Business() {
   return (
     <Layout>
-      <PageHeader title="Employees" link="/employees"></PageHeader>
+      <PageHeader title="Businesses" link="/businesses"></PageHeader>
       <PageContent>
         <PageAside>
           <Card>
-            <CardTitle>Overview</CardTitle>
+            <CardTitle>Position</CardTitle>
+            <CardLabel>Title</CardLabel>
+            <CardInfo>Outside Plan Technician</CardInfo>
           </Card>
         </PageAside>
         <PageMain>
@@ -31,20 +29,20 @@ export default function Employee() {
             </TableHeader>
             <TableRowLink to="/documents/1">
               <TableCell>June 20th, 2020</TableCell>
-              <TableCell>Job Application</TableCell>
-              <TableCell>Corey Smith</TableCell>
+              <TableCell>Invoice</TableCell>
+              <TableCell>Jerry McDaniels</TableCell>
               <TableCell>notes and stuff can go here.</TableCell>
             </TableRowLink>
             <TableRowLink to="/documents/1">
               <TableCell>June 20th, 2020</TableCell>
-              <TableCell>Job Application</TableCell>
-              <TableCell>Corey Smith</TableCell>
+              <TableCell>Statement</TableCell>
+              <TableCell>George Henry</TableCell>
               <TableCell>notes and stuff can go here.</TableCell>
             </TableRowLink>
             <TableRowLink to="/documents/1">
               <TableCell>June 20th, 2020</TableCell>
-              <TableCell>Job Application</TableCell>
-              <TableCell>Corey Smith</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>June Anderson</TableCell>
               <TableCell>notes and stuff can go here.</TableCell>
             </TableRowLink>
           </Table>

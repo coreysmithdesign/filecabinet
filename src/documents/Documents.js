@@ -1,14 +1,10 @@
 import React from "react";
-import Layout from "./layout/Layout";
-import PageHeader from "./layout/PageHeader";
-import PageContent from "./layout/PageContent";
-import PageMain from "./layout/PageMain";
-import Search from "./components/Search";
-import Table, {
-  TableHeader,
-  TableRowLink,
-  TableCell,
-} from "./components/Table";
+import Layout from "../layout/Layout";
+import PageHeader from "../layout/PageHeader";
+import PageContent from "../layout/PageContent";
+import PageMain from "../layout/PageMain";
+import Search from "../global/Search";
+import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 
 export default function Documents() {
   return (

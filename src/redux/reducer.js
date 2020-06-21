@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const initialState = {
   user: {},
   isLoggedIn: false,
@@ -8,6 +10,7 @@ const initialState = {
 // information for you!)
 const LOGIN_USER = "LOGIN_USER";
 const LOGOUT_USER = "LOGOUT_USER";
+const GET_USER = "GET_USER";
 
 export function loginUser(user) {
   return {
@@ -23,6 +26,14 @@ export function logoutUser() {
   };
 }
 
+export function getUser() {
+  const user = axios.get("/api/auth/user");
+  return {
+    type: GET_USER,
+    payload: user,
+  };
+}
+
 // Redux says ok, when sombody says LOGIN_USER/LOGOUT_USER/ETC,
 // this is what I will do...
 export default function (state = initialState, action) {
@@ -31,6 +42,12 @@ export default function (state = initialState, action) {
       return { ...state, user: action.payload, isLoggedIn: true };
     case LOGOUT_USER:
       return { ...state, ...action.payload };
+    case GET_USER + "_PENDING":
+      return state;
+    case GET_USER + "_FULLFILLED":
+      return { ...state, ...action.payload.data, isLoggedIn: true };
+    case GET_USER + "_REJECTED":
+      return initialState;
     default:
       return initialState;
   }

@@ -1,17 +1,36 @@
 module.exports = {
-  list: (req, res) => {
-    res.status(200).send("listing businesses");
+  list: async (req, res) => {
+    const db = req.app.get("db");
+    const businesses = await db.business_list();
+    res.status(200).send(businesses);
   },
-  add: (req, res) => {
-    res.status(200).send("adding a business");
+
+  add: async (req, res) => {
+    const { user_id, business_name, phone, address } = req.body;
+    const db = req.app.get("db");
+    await db.business_add([user_id, business_name, phone, address]);
+    res.status(200).send(`Added new business "${business_name}"`);
   },
-  view: (req, res) => {
-    res.status(200).send("viewing a business");
+
+  view: async (req, res) => {
+    const { id } = req.params;
+    const db = req.app.get("db");
+    const business = await db.business_view([id]);
+    res.status(200).send(business);
   },
-  update: (req, res) => {
-    res.status(200).send("updating a business");
+
+  update: async (req, res) => {
+    const { id } = req.params;
+    const { business_name, phone, address } = req.body;
+    const db = req.app.get("db");
+    await db.business_update([id, business_name, phone, address]);
+    res.status(200).send(`Updated business id: ${id}`);
   },
-  delete: (req, res) => {
-    res.status(200).send("deleting a business");
+
+  delete: async (req, res) => {
+    const { id } = req.params;
+    const db = req.app.get("db");
+    await db.business_delete([id]);
+    res.status(200).send(`Deleted business id: ${id}`);
   },
 };

@@ -1,7 +1,7 @@
 insert into users (
-  username, password, email, full_name, business_name, is_business
+  username, password, email, full_name, business_name
 ) values (
-  $1, $2, $3, $4, $5, $6
+  $1, $2, $3, $4, $5
 );
 
 select

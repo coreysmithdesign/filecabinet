@@ -1,24 +1,41 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/reducer";
+import axios from "axios";
 import Layout from "./layout/Layout";
 import { Form, Label, Input, Submit } from "../global/Form";
 
-export default function Register() {
+export default function Register(props) {
   const [username, setName] = useState("");
   const [password, setPass] = useState("");
   const [email, setEmail] = useState("");
   const [full_name, setFullName] = useState("");
   const [business_name, setBusinessName] = useState("");
+  const dispatch = useDispatch();
 
-  const onSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-    alert(
-      `username: ${username}, password: ${password}, email: ${email}, full name: ${full_name}, business name: ${business_name}`
-    );
+    axios
+      .post("/api/auth/register", {
+        username,
+        password,
+        email,
+        full_name,
+        business_name,
+      })
+      .then((res) => {
+        dispatch(loginUser(res.data));
+        props.history.push("/documents");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Could not register");
+      });
   };
 
   return (
     <Layout>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={handleRegister}>
         <Label htmlFor="username">Username</Label>
         <Input
           type="text"

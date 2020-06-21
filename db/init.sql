@@ -45,7 +45,7 @@ create table employees (
 	drivers_license_expire_date date,
 	phone varchar(25),
 	email varchar(50),
-	addres varchar(80),
+	address varchar(80),
 	irs_marital_status varchar(25),
 	irs_allowances integer,
 	irs_withheld integer

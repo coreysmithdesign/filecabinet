@@ -1,19 +1,35 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/reducer";
 import Layout from "./layout/Layout";
 import { Form, Label, Input, Submit } from "../global/Form";
 
-export default function Login() {
+export default function Login(props) {
   const [username, setName] = useState("");
   const [password, setPass] = useState("");
+  const dispatch = useDispatch();
 
-  const onSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    alert(`username: ${username}, password: ${password}`);
+    axios
+      .post("/api/auth/login", {
+        username,
+        password,
+      })
+      .then((res) => {
+        dispatch(loginUser(res.data));
+        props.history.push("/documents");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Could not register");
+      });
   };
 
   return (
     <Layout>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={handleLogin}>
         <Label htmlFor="username">Username</Label>
         <Input
           type="text"

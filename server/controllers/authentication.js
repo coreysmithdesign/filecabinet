@@ -3,14 +3,7 @@ const bcrypt = require("bcrypt");
 module.exports = {
   register: async (req, res) => {
     const db = req.app.get("db");
-    const {
-      username,
-      password,
-      email,
-      full_name,
-      business_name,
-      is_business,
-    } = req.body;
+    const { username, password, email, full_name, business_name } = req.body;
 
     // check if the username provided already exists
     const existingUser = await db.user_check(username);
@@ -27,7 +20,6 @@ module.exports = {
       email,
       full_name,
       business_name,
-      is_business,
     ]);
     req.session.user = {
       user_id: newUser[0].id,
@@ -59,6 +51,14 @@ module.exports = {
       } else {
         res.status(403).send("Username or password incorrect");
       }
+    }
+  },
+
+  user: (req, res) => {
+    if (req.session.user) {
+      res.status(200).send(req.session.user);
+    } else {
+      res.sendStatus(404);
     }
   },
 

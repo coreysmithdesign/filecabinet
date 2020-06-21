@@ -13,7 +13,7 @@ export default function Edit(props) {
         <Input type="text" name="wage" />
         <Label htmlFor="status">Status</Label>
         <Select type="text" name="status">
-          <Option>-select one-</Option>
+          <Option>select one</Option>
           <Option>Full-time</Option>
           <Option>Part-time</Option>
           <Option>Seasonal</Option>

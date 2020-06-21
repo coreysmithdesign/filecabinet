@@ -1,29 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { Card, CardTitle } from "../global/Card";
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const Label = styled.label`
-  margin: 0.5rem 0 0.25rem;
-`;
-
-const Input = styled.input`
-  width: 100%;
-`;
-
-const Select = styled.select`
-  width: 100%;
-`;
-
-const Submit = styled.input`
-  width: inherit;
-  margin-top: 1rem;
-`;
+import { Form, Label, Input, Select, Submit, Option } from "../global/Form";
 
 export default function Edit(props) {
   return (
@@ -36,13 +13,13 @@ export default function Edit(props) {
         <Input type="text" name="wage" />
         <Label htmlFor="status">Status</Label>
         <Select type="text" name="status">
-          <option>-select one-</option>
-          <option>Full-time</option>
-          <option>Part-time</option>
-          <option>Seasonal</option>
-          <option>Contract</option>
-          <option>Temporary</option>
-          <option>Terminated</option>
+          <Option>-select one-</Option>
+          <Option>Full-time</Option>
+          <Option>Part-time</Option>
+          <Option>Seasonal</Option>
+          <Option>Contract</Option>
+          <Option>Temporary</Option>
+          <Option>Terminated</Option>
         </Select>
         <Label htmlFor="date_of_hire">Date of Hire</Label>
         <Input type="date" name="date_of_hire" />

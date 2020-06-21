@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import Layout from "./layout/Layout";
-import { Form, Label, Input } from "../global/Form";
+import { Form, Label, Input, Submit } from "../global/Form";
 
 export default function Register() {
   const [username, setName] = useState("");
   const [password, setPass] = useState("");
   const [email, setEmail] = useState("");
+  const [full_name, setFullName] = useState("");
+  const [business_name, setBusinessName] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    alert(`username: ${username}, password: ${password}, email: ${email}`);
+    alert(
+      `username: ${username}, password: ${password}, email: ${email}, full name: ${full_name}, business name: ${business_name}`
+    );
   };
 
   return (
@@ -36,7 +40,21 @@ export default function Register() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Input type="submit" value="Submit" />
+        <Label htmlFor="full_name">Full Name</Label>
+        <Input
+          type="text"
+          name="full_name"
+          value={full_name}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+        <Label htmlFor="business_name">Business Name</Label>
+        <Input
+          type="text"
+          name="business_name"
+          value={business_name}
+          onChange={(e) => setBusinessName(e.target.value)}
+        />
+        <Submit type="submit" value="Submit" />
       </Form>
     </Layout>
   );

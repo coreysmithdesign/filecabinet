@@ -8,6 +8,7 @@ module.exports = {
   add: async (req, res) => {
     const {
       user_id,
+      employee_id,
       document_name,
       date_recieved,
       date_added,
@@ -17,6 +18,7 @@ module.exports = {
     const db = req.app.get("db");
     await db.document_add([
       user_id,
+      employee_id,
       document_name,
       date_recieved,
       date_added,
@@ -29,8 +31,8 @@ module.exports = {
   view: async (req, res) => {
     const { id } = req.params;
     const db = req.app.get("db");
-    const post = await db.document_view([id]);
-    res.status(200).send(post);
+    const document = await db.document_view([id]);
+    res.status(200).send(document);
   },
 
   update: async (req, res) => {

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+import axios from "axios";
 import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
@@ -6,42 +7,58 @@ import PageMain from "../layout/PageMain";
 import Search from "../global/Search";
 import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 
-export default function Documents() {
-  return (
-    <Layout>
-      <PageHeader title="Documents">
-        <Search />
-      </PageHeader>
-      <PageContent>
-        <PageMain>
-          <Table>
-            <TableHeader>
-              <TableCell>Date</TableCell>
-              <TableCell>Document</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Note</TableCell>
-            </TableHeader>
-            <TableRowLink to="/documents/1">
-              <TableCell>June 20th, 2020</TableCell>
-              <TableCell>Job Application</TableCell>
-              <TableCell>Corey Smith</TableCell>
-              <TableCell>notes and stuff can go here.</TableCell>
-            </TableRowLink>
-            <TableRowLink to="/documents/1">
-              <TableCell>June 20th, 2020</TableCell>
-              <TableCell>Job Application</TableCell>
-              <TableCell>Corey Smith</TableCell>
-              <TableCell>notes and stuff can go here.</TableCell>
-            </TableRowLink>
-            <TableRowLink to="/documents/1">
-              <TableCell>June 20th, 2020</TableCell>
-              <TableCell>Job Application</TableCell>
-              <TableCell>Corey Smith</TableCell>
-              <TableCell>notes and stuff can go here.</TableCell>
-            </TableRowLink>
-          </Table>
-        </PageMain>
-      </PageContent>
-    </Layout>
-  );
+class Documents extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      documents: [],
+    };
+  }
+
+  componentDidMount() {
+    this.getDocuments();
+  }
+
+  getDocuments() {
+    axios.get(`/api/documents`).then((res) => {
+      this.setState({
+        documents: res.data,
+      });
+    });
+  }
+
+  render() {
+    const documentList = this.state.documents.map((document) => (
+      <TableRowLink key={document.id} to="/documents/1">
+        <TableCell>{document.date_added}</TableCell>
+        <TableCell>{document.document_name}</TableCell>
+        <TableCell>{document.id}</TableCell>
+        <TableCell>{document.note}</TableCell>
+      </TableRowLink>
+    ));
+
+    return (
+      <Layout>
+        <PageHeader title="Documents">
+          <Search />
+        </PageHeader>
+        <PageContent>
+          <PageMain>
+            <Table>
+              <TableHeader>
+                <TableCell>Date</TableCell>
+                <TableCell>Document</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Note</TableCell>
+              </TableHeader>
+              {documentList}
+            </Table>
+          </PageMain>
+        </PageContent>
+      </Layout>
+    );
+  }
 }
+
+export default Documents;

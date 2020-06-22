@@ -3,8 +3,9 @@ import { Switch, Route } from "react-router";
 import Welcome from "./authentication/Welcome";
 import Login from "./authentication/Login";
 import Register from "./authentication/Register";
-import Documents from "./documents/Documents";
+import NewDocument from "./documents/NewDocument";
 import Document from "./documents/Document";
+import Documents from "./documents/Documents";
 import Employees from "./employees/Employees";
 import Employee from "./employees/Employee";
 import Businesses from "./businesses/Businesses";
@@ -16,6 +17,7 @@ export default (
     <Route exact path="/" component={Welcome} />
     <Route path="/login/" component={Login} />
     <Route path="/register/" component={Register} />
+    <Route path="/documents/new" component={NewDocument} />
     <Route path="/documents/:id/" component={Document} />
     <Route path="/documents/" component={Documents} />
     <Route path="/employees/:id/" component={Employee} />

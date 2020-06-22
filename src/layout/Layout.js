@@ -160,7 +160,7 @@ export default function Layout(props) {
           <LogoIcon>{icon.cabinet}</LogoIcon>file
           <LogoCabinet>cabinet</LogoCabinet>
         </Logo>
-        <AddNew to="/documents">
+        <AddNew to="/documents/new">
           {icon.add} {icon.caret_down}
         </AddNew>
         <ProfileLink to="/profile" title="Go to your profile">

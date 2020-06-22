@@ -99,4 +99,6 @@ export const icon = {
   caret_down: <FontAwesomeIcon icon={"caret-down"} />,
   check: <FontAwesomeIcon icon={"check"} />,
   times: <FontAwesomeIcon icon={"times"} />,
+  see: <FontAwesomeIcon icon={"eye"} />,
+  unsee: <FontAwesomeIcon icon={"eye-slash"} />,
 };

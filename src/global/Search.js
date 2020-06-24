@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const SearchField = styled.input`
-  all: unset;
   background: white;
   padding: 0.5rem;
+  border: 0;
   border-radius: 4px;
+  width: 100%;
 `;
 
 export default function Search() {

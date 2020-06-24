@@ -8,5 +8,5 @@ const MainGroup = styled.main`
 `;
 
 export default function PageMain(props) {
-  return <MainGroup className="MainGroup">{props.children}</MainGroup>;
+  return <MainGroup>{props.children}</MainGroup>;
 }

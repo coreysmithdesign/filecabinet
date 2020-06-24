@@ -29,7 +29,7 @@ class Businesses extends Component {
 
   render() {
     const businessesList = this.state.businesses.map((business) => (
-      <TableRowLink key={business.id} to="/businesses/1">
+      <TableRowLink key={business.id} to={`/businesses/${business.id}`}>
         <TableCell>{business.business_name}</TableCell>
         <TableCell>{business.phone}</TableCell>
         <TableCell>{business.address}</TableCell>

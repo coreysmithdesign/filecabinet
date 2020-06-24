@@ -13,9 +13,5 @@ const PageContentGroup = styled.div`
 `;
 
 export default function PageContent(props) {
-  return (
-    <PageContentGroup className="PageContentGroup">
-      {props.children}
-    </PageContentGroup>
-  );
+  return <PageContentGroup>{props.children}</PageContentGroup>;
 }

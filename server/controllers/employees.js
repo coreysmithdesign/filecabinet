@@ -61,6 +61,13 @@ module.exports = {
     res.status(200).send(employee);
   },
 
+  view_documents: async (req, res) => {
+    const { id } = req.params;
+    const db = req.app.get("db");
+    const employee_docs = await db.employee_document_list([id]);
+    res.status(200).send(employee_docs);
+  },
+
   update: async (req, res) => {
     const { id } = req.params;
     const {

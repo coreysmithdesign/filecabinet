@@ -101,4 +101,5 @@ export const icon = {
   times: <FontAwesomeIcon icon={"times"} />,
   see: <FontAwesomeIcon icon={"eye"} />,
   unsee: <FontAwesomeIcon icon={"eye-slash"} />,
+  upload: <FontAwesomeIcon icon={"file-upload"} />,
 };

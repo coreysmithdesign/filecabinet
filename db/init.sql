@@ -22,15 +22,11 @@ create table employees (
 	position varchar(50),
 	department varchar(50),
 	employment_status varchar(50),
-	date_of_hire date,
-	date_of_separation date,
 	current_wage integer,
 	pto_level varchar(25),
-	birth_date date,
 	citizenship varchar(50),
 	drivers_license_number varchar(50),
 	drivers_license_state varchar(50),
-	drivers_license_expire_date date,
 	phone varchar(25),
 	email varchar(50),
 	address varchar(80),
@@ -44,9 +40,7 @@ create table documents (
 	user_id integer references users(id),
 	employee_id integer references employees(id),
 	document_name varchar(100),
-	date_recieved date,
-	date_added date,
-	date_modified date,
+	document_url text,
 	note text
 );
 

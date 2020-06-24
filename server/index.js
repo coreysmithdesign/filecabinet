@@ -6,11 +6,59 @@ const authCtrl = require("./controllers/authentication");
 const documentCtrl = require("./controllers/documents");
 const employeeCtrl = require("./controllers/employees");
 const businessCtrl = require("./controllers/businesses");
-const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
+const {
+  SERVER_PORT,
+  SESSION_SECRET,
+  CONNECTION_STRING,
+  S3_BUCKET,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+} = process.env;
 const app = express();
 
 // middleware - json parser
 app.use(express.json());
+
+// amazon s3
+const aws = require("aws-sdk");
+
+app.get("/api/signs3", (req, res) => {
+  aws.config = {
+    region: "us-west-1",
+    accessKeyId: AWS_ACCESS_KEY_ID,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY,
+  };
+
+  const s3 = new aws.S3();
+  const fileName = req.query["file-name"];
+  const fileType = req.query["file-type"];
+  const s3Params = {
+    Bucket: S3_BUCKET,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: "public-read",
+  };
+
+  s3.getSignedUrl("putObject", s3Params, async (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`,
+    };
+
+    const db = req.app.get("db");
+    const { id } = req.params;
+    const { url } = returnData;
+    await db.document_update([id, url]);
+    res.status(200).send(`Updated document id: ${id}`);
+
+    return res.send(returnData);
+  });
+});
 
 // middleware - session
 app.use(
@@ -39,6 +87,7 @@ app.delete("/api/document/:id", documentCtrl.delete);
 app.get("/api/employees", employeeCtrl.list);
 app.post("/api/employees", employeeCtrl.add);
 app.get("/api/employee/:id", employeeCtrl.view);
+app.get("/api/employee/docs/:id", employeeCtrl.view_documents);
 app.put("/api/employee/:id", employeeCtrl.update);
 app.delete("/api/employee/:id", employeeCtrl.delete);
 

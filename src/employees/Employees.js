@@ -29,7 +29,7 @@ class Employees extends Component {
 
   render() {
     const employeeList = this.state.employees.map((employee) => (
-      <TableRowLink key={employee.id} to="/employees/1">
+      <TableRowLink key={employee.id} to={`/employees/${employee.id}`}>
         <TableCell>{employee.employee_name}</TableCell>
         <TableCell>{employee.position}</TableCell>
         <TableCell>{employee.employment_status}</TableCell>

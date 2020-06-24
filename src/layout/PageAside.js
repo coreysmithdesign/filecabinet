@@ -15,5 +15,5 @@ const AsideGroup = styled.aside`
 `;
 
 export default function PageAside(props) {
-  return <AsideGroup className="AsideGroup">{props.children}</AsideGroup>;
+  return <AsideGroup>{props.children}</AsideGroup>;
 }

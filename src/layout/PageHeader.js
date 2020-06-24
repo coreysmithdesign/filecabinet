@@ -4,15 +4,14 @@ import { size } from "../global/Interface";
 import { Link } from "react-router-dom";
 
 const PageHeaderGroup = styled.div`
-  flex: 0 0 50px;
-  display: flex;
-  overflow: auto;
-  align-items: center;
-  padding: 0 1rem;
+  padding: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   background-color: #29303b;
   @media (min-width: ${size.lg}) {
+    display: flex;
     flex: 0 0 85px;
+    align-items: center;
+    padding: 0 1rem;
   }
 `;
 
@@ -20,6 +19,10 @@ const PageTitle = styled.h2`
   color: white;
   font-size: 1.2rem;
   font-weight: 400;
+  margin: 0 0 0.5rem;
+  @media (min-width: ${size.lg}) {
+    margin: 0;
+  }
 `;
 
 const PageLink = styled(Link)`
@@ -42,7 +45,7 @@ const PageActions = styled.div`
 
 export default function PageHeader(props) {
   return (
-    <PageHeaderGroup className="pageHeaderGroup">
+    <PageHeaderGroup>
       <PageTitle>
         {props.link ? (
           <PageLink to={`${props.link}`}>{props.title}</PageLink>

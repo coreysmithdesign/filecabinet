@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../redux/reducer";
+import { useHistory } from "react-router";
+import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { icon, size, color } from "../global/Interface";
@@ -69,13 +73,36 @@ const NavLink = styled(Link)`
   }
 `;
 
-const AddNew = styled(Link)`
+const ShortcutGroup = styled.div`
+  @media (min-width: ${size.lg}) {
+    position: relative;
+  }
+`;
+
+const ShortcutDropdown = styled.div`
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 50px;
+  right: 0;
+  background: white;
+  padding: 0.5rem 0;
+  @media (min-width: ${size.lg}) {
+    width: 300px;
+    top: 40px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  }
+`;
+
+const ShortcutButton = styled.button`
   font-weight: 100;
   font-size: 1.5rem;
   text-decoration: none;
   font-size: 1rem;
   color: ${color.text};
-  margin-right: 1rem;
+  margin-left: 1rem;
   :hover {
     color: ${color.text};
   }
@@ -84,16 +111,22 @@ const AddNew = styled(Link)`
   }
 `;
 
-const ProfileLink = styled(Link)`
-  font-size: 1rem;
+const ShortcutLink = styled(Link)`
+  display: block;
+  padding: 1rem;
   text-decoration: none;
-  :hover {
-    text-decoration: none;
-    color: ${color.text};
-  }
-  color: ${color.text};
+  color: #555;
   :visited {
-    color: ${color.text};
+    text-decoration: none;
+    color: #555;
+  }
+  :hover {
+    background: #29303b;
+    color: #fff;
+    text-decoration: none;
+  }
+  @media (min-width: ${size.lg}) {
+    padding: 0.5rem 1rem;
   }
 `;
 
@@ -114,12 +147,12 @@ const Logo = styled(Link)`
   color: #444;
   font-size: 1rem;
   font-weight: 800;
-  :hover {
-    text-decoration: none;
-    color: #444;
-  }
   color: white;
   :visited {
+    color: #444;
+  }
+  :hover {
+    text-decoration: none;
     color: #444;
   }
   @media (min-width: ${size.md}) {
@@ -153,21 +186,59 @@ const Content = styled.div`
 `;
 
 export default function Layout(props) {
+  const [revealNew, setRevealNew] = useState(false);
+  const [revealOpt, setRevealOpt] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const submitLogout = () => {
+    alert("logging out!");
+    axios.post("/api/auth/logout").then(() => {
+      dispatch(logoutUser());
+      history.push("/login");
+    });
+  };
+
   return (
-    <LayoutGroup className="LayoutGroup">
-      <Header className="Header">
+    <LayoutGroup>
+      <Header>
         <Logo to="/documents">
           <LogoIcon>{icon.cabinet}</LogoIcon>file
           <LogoCabinet>cabinet</LogoCabinet>
         </Logo>
-        <AddNew to="/documents/new">
-          {icon.add} {icon.caret_down}
-        </AddNew>
-        <ProfileLink to="/profile" title="Go to your profile">
-          {icon.profile} {icon.caret_down}
-        </ProfileLink>
+
+        <ShortcutGroup>
+          <ShortcutButton
+            title="Add a new item"
+            onClick={() => setRevealNew((revealNew) => !revealNew)}
+          >
+            {icon.add} {icon.caret_down}
+          </ShortcutButton>
+          {revealNew && (
+            <ShortcutDropdown>
+              <ShortcutLink to="/documents/new">New Document</ShortcutLink>
+              <ShortcutLink to="/employees/new">New Employee</ShortcutLink>
+              <ShortcutLink to="/businesses/new">New Business</ShortcutLink>
+            </ShortcutDropdown>
+          )}
+        </ShortcutGroup>
+
+        <ShortcutGroup>
+          <ShortcutButton
+            title="Go to your profile"
+            onClick={() => setRevealOpt((revealOpt) => !revealOpt)}
+          >
+            {icon.profile} {icon.caret_down}
+          </ShortcutButton>
+          {revealOpt && (
+            <ShortcutDropdown>
+              <ShortcutLink to="/profile">Profile</ShortcutLink>
+              <ShortcutLink onClick={submitLogout}>Logout</ShortcutLink>
+            </ShortcutDropdown>
+          )}
+        </ShortcutGroup>
       </Header>
-      <Nav className="Nav">
+      <Nav>
         <NavLink to="/documents" title="Go to documents">
           <NavIcon>{icon.files}</NavIcon>Documents
         </NavLink>
@@ -178,7 +249,7 @@ export default function Layout(props) {
           <NavIcon>{icon.folders}</NavIcon>Businesses
         </NavLink>
       </Nav>
-      <Content className="Content">{props.children}</Content>
+      <Content>{props.children}</Content>
     </LayoutGroup>
   );
 }

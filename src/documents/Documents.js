@@ -30,8 +30,7 @@ class Documents extends Component {
 
   render() {
     const documentList = this.state.documents.map((document) => (
-      <TableRowLink key={document.id} to="/documents/1">
-        <TableCell>{document.date_added}</TableCell>
+      <TableRowLink key={document.id} to={`/documents/${document.id}`}>
         <TableCell>{document.document_name}</TableCell>
         <TableCell>{document.id}</TableCell>
         <TableCell>{document.note}</TableCell>
@@ -47,7 +46,6 @@ class Documents extends Component {
           <PageMain>
             <Table>
               <TableHeader>
-                <TableCell>Date</TableCell>
                 <TableCell>Document</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Note</TableCell>

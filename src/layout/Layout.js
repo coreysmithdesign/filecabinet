@@ -130,6 +130,25 @@ const ShortcutLink = styled(Link)`
   }
 `;
 
+const ShortcutLogout = styled.a`
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: #555;
+  :visited {
+    text-decoration: none;
+    color: #555;
+  }
+  :hover {
+    background: #29303b;
+    color: #fff;
+    text-decoration: none;
+  }
+  @media (min-width: ${size.lg}) {
+    padding: 0.5rem 1rem;
+  }
+`;
+
 const NavIcon = styled.span`
   font-size: 1rem;
   margin-bottom: 0.25rem;
@@ -233,7 +252,9 @@ export default function Layout(props) {
           {revealOpt && (
             <ShortcutDropdown>
               <ShortcutLink to="/profile">Profile</ShortcutLink>
-              <ShortcutLink onClick={submitLogout}>Logout</ShortcutLink>
+              <ShortcutLogout href="#" onClick={submitLogout}>
+                Logout
+              </ShortcutLogout>
             </ShortcutDropdown>
           )}
         </ShortcutGroup>

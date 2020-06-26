@@ -58,6 +58,7 @@ class NewDocument extends Component {
       .post(`/api/documents/`, { document_name, note, employee_id })
       .then((res) => {
         console.log(res);
+        this.props.history.push(`/documents/${res.data.document_id}`);
       })
       .catch((err) => {
         alert("Could not post");

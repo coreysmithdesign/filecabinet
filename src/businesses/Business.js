@@ -29,6 +29,20 @@ class Business extends Component {
     });
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    axios
+      .delete(`/api/business/${this.props.match.params.id}`)
+      .then((res) => {
+        console.log("Business deleted");
+        this.props.history.push("/businesses");
+      })
+      .catch((err) => {
+        alert("Could not delete");
+        console.log(err);
+      });
+  }
+
   render() {
     console.log(this.state);
     const { business_name, phone, address } = this.state.business;
@@ -45,6 +59,7 @@ class Business extends Component {
               <CardLabel>Address</CardLabel>
               <CardInfo>{address}</CardInfo>
             </Card>
+            <button onClick={(e) => this.handleDelete(e)}>Delete</button>
           </PageAside>
           <PageMain>
             <Table>

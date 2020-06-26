@@ -172,6 +172,20 @@ class Document extends Component {
       });
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    axios
+      .delete(`/api/document/${this.props.match.params.id}`)
+      .then((res) => {
+        console.log("Document deleted");
+        this.props.history.push("/documents");
+      })
+      .catch((err) => {
+        alert("Could not delete");
+        console.log(err);
+      });
+  }
+
   render() {
     console.log(this.state);
     const { document_name, note, employee_id, url, isUploading } = this.state;
@@ -244,6 +258,7 @@ class Document extends Component {
 
                 <Submit type="submit" value="Submit" />
               </Form>
+              <button onClick={(e) => this.handleDelete(e)}>Delete</button>
             </Card>
           </PageAside>
           <PageMain>

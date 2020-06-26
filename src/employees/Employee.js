@@ -120,6 +120,20 @@ class Employee extends Component {
       });
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    axios
+      .delete(`/api/employee/${this.props.match.params.id}`)
+      .then((res) => {
+        console.log("Employee deleted");
+        this.props.history.push("/employees");
+      })
+      .catch((err) => {
+        alert("Could not delete");
+        console.log(err);
+      });
+  }
+
   render() {
     console.log(this.state);
     const {
@@ -290,6 +304,7 @@ class Employee extends Component {
 
                 <Submit type="submit" value="Submit" />
               </Form>
+              <button onClick={(e) => this.handleDelete(e)}>Delete</button>
             </Card>
           </PageAside>
           <PageMain>

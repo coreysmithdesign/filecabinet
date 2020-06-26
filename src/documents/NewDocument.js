@@ -22,7 +22,21 @@ class NewDocument extends Component {
     this.state = {
       document_name: "",
       note: "",
+      employee_id: 0,
+      employees: [],
     };
+  }
+
+  componentDidMount() {
+    this.getEmployees();
+  }
+
+  getEmployees() {
+    axios.get(`/api/employees`).then((res) => {
+      this.setState({
+        employees: res.data,
+      });
+    });
   }
 
   handleChange = (e) => {
@@ -31,13 +45,19 @@ class NewDocument extends Component {
     });
   };
 
+  handleChangeSelect = (e) => {
+    this.setState({
+      [e.target.name]: +e.target.value,
+    });
+  };
+
   handleSubmit(e) {
     e.preventDefault();
-    const { document_name, note } = this.state;
+    const { document_name, note, employee_id } = this.state;
     axios
-      .post(`/api/documents/`, { document_name, note })
+      .post(`/api/documents/`, { document_name, note, employee_id })
       .then((res) => {
-        console.log("success");
+        console.log(res);
       })
       .catch((err) => {
         alert("Could not post");
@@ -46,8 +66,15 @@ class NewDocument extends Component {
   }
 
   render() {
-    const { note, document_name } = this.state;
+    const { note, document_name, employee_id } = this.state;
     console.log(this.state);
+
+    const employeeList = this.state.employees.map((employee) => (
+      <Option key={employee.employee_id} value={employee.employee_id}>
+        {employee.employee_name}
+      </Option>
+    ));
+
     return (
       <Layout>
         <PageHeader title="Add a New Document"></PageHeader>
@@ -56,8 +83,13 @@ class NewDocument extends Component {
             <Form onSubmit={(e) => this.handleSubmit(e)}>
               <FormSection>Document Information</FormSection>
               <Label htmlFor="employee_id">Belongs To</Label>
-              <Select name="employee_id">
-                <Option>Corey Smith</Option>
+              <Select
+                name="employee_id"
+                value={employee_id}
+                onChange={(e) => this.handleChangeSelect(e)}
+              >
+                <Option key={0}>select</Option>
+                {employeeList}
               </Select>
 
               <Label htmlFor="document_name">Document Name</Label>

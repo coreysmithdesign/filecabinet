@@ -1,4 +1,4 @@
 delete from
 	businesses
 where
-	id = $1;
+	business_id = $1;

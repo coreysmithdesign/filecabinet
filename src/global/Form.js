@@ -29,6 +29,8 @@ export const Input = styled.input`
   border-radius: 4px;
 `;
 
+export const Datalist = styled.datalist``;
+
 export const TextArea = styled.textarea`
   width: 100%;
   border: 1px solid #ddd;

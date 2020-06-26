@@ -6,25 +6,9 @@ module.exports = {
   },
 
   add: async (req, res) => {
-    const {
-      user_id,
-      employee_id,
-      document_name,
-      date_recieved,
-      date_added,
-      date_modified,
-      note,
-    } = req.body;
+    const { user_id, employee_id, document_name, note } = req.body;
     const db = req.app.get("db");
-    await db.document_add([
-      user_id,
-      employee_id,
-      document_name,
-      date_recieved,
-      date_added,
-      date_modified,
-      note,
-    ]);
+    await db.document_add([user_id, employee_id, document_name, note]);
     res.status(200).send(`Added new document "${document_name}"`);
   },
 
@@ -37,22 +21,18 @@ module.exports = {
 
   update: async (req, res) => {
     const { id } = req.params;
-    const {
-      document_name,
-      date_recieved,
-      date_added,
-      date_modified,
-      note,
-    } = req.body;
+    const { document_name, employee_id, note } = req.body;
+    console.log(id);
     const db = req.app.get("db");
-    await db.document_update([
-      id,
-      document_name,
-      date_recieved,
-      date_added,
-      date_modified,
-      note,
-    ]);
+    await db.document_update([id, document_name, employee_id, note]);
+    res.status(200).send(`Updated document id: ${id}`);
+  },
+
+  save_file: async (req, res) => {
+    const { id } = req.params;
+    const { url } = req.body;
+    const db = req.app.get("db");
+    await db.document_save_file([id, url]);
     res.status(200).send(`Updated document id: ${id}`);
   },
 

@@ -41,50 +41,6 @@ class New extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getEmployee();
-  }
-
-  getEmployee() {
-    axios.get(`/api/employee/${this.props.match.params.id}`).then((res) => {
-      const {
-        employee_name,
-        address,
-        citizenship,
-        current_wage,
-        department,
-        drivers_license_number,
-        drivers_license_state,
-        email,
-        employment_status,
-        irs_allowances,
-        irs_marital_status,
-        irs_withheld,
-        phone,
-        position,
-        pto_level,
-      } = res.data[0];
-
-      this.setState({
-        employee_name: employee_name,
-        address: address,
-        citizenship: citizenship,
-        current_wage: current_wage,
-        department: department,
-        drivers_license_number: drivers_license_number,
-        drivers_license_state: drivers_license_state,
-        email: email,
-        employment_status: employment_status,
-        irs_allowances: irs_allowances,
-        irs_marital_status: irs_marital_status,
-        irs_withheld: irs_withheld,
-        phone: phone,
-        position: position,
-        pto_level: pto_level,
-      });
-    });
-  }
-
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,

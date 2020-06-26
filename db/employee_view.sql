@@ -1,2 +1,2 @@
 select * from employees
-where id = $1;
+where employee_id = $1;

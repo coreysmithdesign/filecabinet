@@ -1,2 +1,2 @@
 select * from businesses
-where id = $1;
+where business_id = $1;

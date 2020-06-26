@@ -209,7 +209,7 @@ export default function Layout(props) {
 
         <ShortcutGroup>
           <ShortcutButton
-            title="Add a new item"
+            title="Add a new item asdf"
             onClick={() => setRevealNew((revealNew) => !revealNew)}
           >
             {icon.add} {icon.caret_down}

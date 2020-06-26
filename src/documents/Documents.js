@@ -29,10 +29,14 @@ class Documents extends Component {
   }
 
   render() {
+    console.log(this.state);
     const documentList = this.state.documents.map((document) => (
-      <TableRowLink key={document.id} to={`/documents/${document.id}`}>
+      <TableRowLink
+        key={document.document_id}
+        to={`/documents/${document.document_id}`}
+      >
         <TableCell>{document.document_name}</TableCell>
-        <TableCell>{document.id}</TableCell>
+        <TableCell>{document.employee_name}</TableCell>
         <TableCell>{document.note}</TableCell>
       </TableRowLink>
     ));
@@ -47,7 +51,7 @@ class Documents extends Component {
             <Table>
               <TableHeader>
                 <TableCell>Document</TableCell>
-                <TableCell>Name</TableCell>
+                <TableCell>Employee</TableCell>
                 <TableCell>Note</TableCell>
               </TableHeader>
               {documentList}

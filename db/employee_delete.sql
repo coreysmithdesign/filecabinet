@@ -1,4 +1,4 @@
 delete from
 	employees
 where
-	id = $1;
+	employee_id = $1;

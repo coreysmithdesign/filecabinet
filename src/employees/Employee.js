@@ -143,8 +143,11 @@ class Employee extends Component {
     console.log(this.state.document_list);
 
     const documentList = this.state.document_list.map((document) => (
-      <TableRowLink key={document.id} to={`/documents/${document.id}`}>
-        <TableCell>{document.id}</TableCell>
+      <TableRowLink
+        key={document.document_id}
+        to={`/documents/${document.document_id}`}
+      >
+        <TableCell>{document.document_id}</TableCell>
         <TableCell>{document.document_name}</TableCell>
         <TableCell>{document.note}</TableCell>
       </TableRowLink>

@@ -1,4 +1,4 @@
 delete from
 	documents
 where
-	id = $1;
+	document_id = $1;

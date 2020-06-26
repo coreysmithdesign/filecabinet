@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router";
+import requireAuth from "./utils/requireAuth";
 import Welcome from "./authentication/Welcome";
 import Login from "./authentication/Login";
 import Register from "./authentication/Register";
@@ -19,15 +20,15 @@ export default (
     <Route exact path="/" component={Welcome} />
     <Route path="/login/" component={Login} />
     <Route path="/register/" component={Register} />
-    <Route path="/documents/new" component={NewDocument} />
-    <Route path="/documents/:id/" component={Document} />
-    <Route path="/documents/" component={Documents} />
-    <Route path="/employees/new" component={NewEmployee} />
-    <Route path="/employees/:id/" component={Employee} />
-    <Route path="/employees/" component={Employees} />
-    <Route path="/businesses/new" component={NewBusiness} />
-    <Route path="/businesses/:id/" component={Business} />
-    <Route path="/businesses/" component={Businesses} />
-    <Route path="/profile/" component={Profile} />
+    <Route path="/documents/new" component={requireAuth(NewDocument)} />
+    <Route path="/documents/:id/" component={requireAuth(Document)} />
+    <Route path="/documents/" component={requireAuth(Documents)} />
+    <Route path="/employees/new" component={requireAuth(NewEmployee)} />
+    <Route path="/employee/:id/" component={requireAuth(Employee)} />
+    <Route path="/employees/" component={requireAuth(Employees)} />
+    <Route path="/businesses/new" component={requireAuth(NewBusiness)} />
+    <Route path="/business/:id/" component={requireAuth(Business)} />
+    <Route path="/businesses/" component={requireAuth(Businesses)} />
+    <Route path="/profile/" component={requireAuth(Profile)} />
   </Switch>
 );

@@ -5,4 +5,4 @@ set
   phone = $3,
   address = $4
 where
-  id = $1;
+  business_id = $1;

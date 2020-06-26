@@ -50,12 +50,6 @@ app.get("/api/signs3", (req, res) => {
       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`,
     };
 
-    const db = req.app.get("db");
-    const { id } = req.params;
-    const { url } = returnData;
-    await db.document_update([id, url]);
-    res.status(200).send(`Updated document id: ${id}`);
-
     return res.send(returnData);
   });
 });
@@ -81,6 +75,7 @@ app.get("/api/documents", documentCtrl.list);
 app.post("/api/documents", documentCtrl.add);
 app.get("/api/document/:id", documentCtrl.view);
 app.put("/api/document/:id", documentCtrl.update);
+app.put("/api/document/save/:id", documentCtrl.save_file);
 app.delete("/api/document/:id", documentCtrl.delete);
 
 // endpoints - employees

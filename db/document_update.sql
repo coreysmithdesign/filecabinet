@@ -2,9 +2,7 @@ update
   documents
 set 
   document_name = $2,
-  date_recieved = $3,
-  date_added = $4,
-  date_modified = $5,
-  note = $6
+  employee_id = $3,
+  note = $4
 where
-  id = $1;
+  document_id = $1;

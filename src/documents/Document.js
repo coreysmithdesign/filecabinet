@@ -21,7 +21,7 @@ import {
   Option,
 } from "../global/Form";
 
-const DropzoneArea = styled.p`
+const DropzoneArea = styled.div`
   border: 1px dashed #dddddd;
   background-color: #ebebf0;
   padding: 1rem 0;
@@ -43,9 +43,11 @@ class Document extends Component {
     super(props);
 
     this.state = {
-      id: "",
       document_name: "",
       note: "",
+      employees: [],
+      employee_id: "",
+      employee_name: "",
       isUploading: false,
       url: "http://via.placeholder.com/450x450",
     };
@@ -98,20 +100,44 @@ class Document extends Component {
           alert(`ERROR: ${err.status}\n ${err.stack}`);
         }
       });
+
+    axios
+      .put(`/api/document/save/${this.props.match.params.id}`, { url })
+      .then((res) => {
+        console.log("image saved");
+      })
+      .catch((err) => console.log(err));
   };
 
   componentDidMount() {
     this.getDocument();
+    this.getEmployees();
   }
 
   getDocument() {
     axios.get(`/api/document/${this.props.match.params.id}`).then((res) => {
-      const { id, document_name, note } = res.data[0];
-
+      const {
+        document_name,
+        document_url,
+        note,
+        employee_id,
+        employee_name,
+      } = res.data[0];
+      console.log("tthe responst", res.data);
       this.setState({
-        id: id,
         document_name: document_name,
+        url: document_url,
         note: note,
+        employee_id: employee_id,
+        employee_name: employee_name,
+      });
+    });
+  }
+
+  getEmployees() {
+    axios.get(`/api/employees`).then((res) => {
+      this.setState({
+        employees: res.data,
       });
     });
   }
@@ -122,11 +148,21 @@ class Document extends Component {
     });
   };
 
+  handleChangeSelect = (e) => {
+    this.setState({
+      employee_id: +e.target.value,
+    });
+  };
+
   handleSubmit(e) {
     e.preventDefault();
-    const { document_name, note, id } = this.state;
+    const { document_name, employee_id, note } = this.state;
     axios
-      .put(`/api/document/${id}`, { document_name, note })
+      .put(`/api/document/${this.props.match.params.id}`, {
+        document_name,
+        employee_id,
+        note,
+      })
       .then((res) => {
         console.log("success");
       })
@@ -138,7 +174,13 @@ class Document extends Component {
 
   render() {
     console.log(this.state);
-    const { note, document_name, url, isUploading } = this.state;
+    const { document_name, note, employee_id, url, isUploading } = this.state;
+
+    const employeeList = this.state.employees.map((employee) => (
+      <Option key={employee.employee_id} value={employee.employee_id}>
+        {employee.employee_name}
+      </Option>
+    ));
 
     return (
       <Layout>
@@ -153,7 +195,7 @@ class Document extends Component {
                       <input {...getInputProps()} />
                       {isUploading ? (
                         <DropzoneArea>
-                          <BarLoader color={"#ee5960"} />
+                          <BarLoader />
                           <DropzoneInstruction>
                             Attaching file...
                           </DropzoneInstruction>
@@ -181,8 +223,13 @@ class Document extends Component {
                 />
 
                 <Label htmlFor="employee_id">Belongs To</Label>
-                <Select name="employee_id">
-                  <Option>Corey Smith</Option>
+                <Select
+                  name="employee_id"
+                  value={employee_id}
+                  onChange={(e) => this.handleChangeSelect(e)}
+                >
+                  <Option key={employee_id}>select</Option>
+                  {employeeList}
                 </Select>
 
                 <Label htmlFor="note">Note</Label>

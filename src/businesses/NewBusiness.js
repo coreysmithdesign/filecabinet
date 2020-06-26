@@ -7,6 +7,7 @@ import { Form, FormSection, Label, Input } from "../global/Form";
 
 class New extends Component {
   render() {
+    console.log(this.state);
     return (
       <Layout>
         <PageHeader title="Add a New Business"></PageHeader>

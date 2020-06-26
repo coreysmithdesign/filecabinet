@@ -4,15 +4,11 @@ insert into employees (
   position,
   department,
   employment_status,
-  date_of_hire,
-  date_of_separation,
   current_wage,
   pto_level,
-  birth_date,
   citizenship,
   drivers_license_number,
   drivers_license_state,
-  drivers_license_expire_date,
   phone,
   email,
   address,
@@ -35,11 +31,7 @@ insert into employees (
   $13,
   $14,
   $15,
-  $16,
-  $17,
-  $18,
-  $19,
-  $20
+  $16
 );
 
 select * from employees;

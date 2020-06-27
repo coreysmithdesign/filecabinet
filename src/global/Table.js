@@ -14,9 +14,9 @@ export const TableHeader = styled.div`
   padding: 1rem;
   position: sticky;
   top: 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  background-color: #f6f6f8;
   font-weight: bold;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #e1e1e8;
   @media (min-width: 600px) {
     padding: 0;
     display: table;
@@ -48,11 +48,10 @@ export const TableRowLink = styled(Link)`
   flex-direction: column;
   text-decoration: none;
   color: ${color.text};
-  transition: all 0.1s;
+  border-bottom: 1px solid #e1e1e8;
   &&:hover {
     text-decoration: none;
-    color: white;
-    background-color: #29303b;
+    background-color: rgba(41, 49, 59, 0.2);
   }
   :visited {
     text-decoration: none;
@@ -63,8 +62,7 @@ export const TableRowLink = styled(Link)`
   }
   &&:nth-of-type(odd):hover {
     text-decoration: none;
-    color: white;
-    background-color: #29303b;
+    background-color: rgba(41, 49, 59, 0.2);
   }
   @media (min-width: 600px) {
     padding: 0;

@@ -40,6 +40,7 @@ create table documents (
 	user_id integer references users(user_id),
 	employee_id integer references employees(employee_id),
 	document_name varchar(100),
+	document_category varchar(100),
 	document_url text,
 	note text
 );

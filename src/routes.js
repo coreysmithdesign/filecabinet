@@ -24,10 +24,10 @@ export default (
     <Route path="/documents/:id/" component={requireAuth(Document)} />
     <Route path="/documents/" component={requireAuth(Documents)} />
     <Route path="/employees/new" component={requireAuth(NewEmployee)} />
-    <Route path="/employee/:id/" component={requireAuth(Employee)} />
+    <Route path="/employees/:id/" component={requireAuth(Employee)} />
     <Route path="/employees/" component={requireAuth(Employees)} />
     <Route path="/businesses/new" component={requireAuth(NewBusiness)} />
-    <Route path="/business/:id/" component={requireAuth(Business)} />
+    <Route path="/businesses/:id/" component={requireAuth(Business)} />
     <Route path="/businesses/" component={requireAuth(Businesses)} />
     <Route path="/profile/" component={requireAuth(Profile)} />
   </Switch>

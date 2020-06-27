@@ -9,8 +9,8 @@ import {
   faFolder,
   faFolders,
 } from "@fortawesome/pro-solid-svg-icons";
-import { faPlusCircle } from "@fortawesome/pro-light-svg-icons";
-library.add(fas, faCabinetFiling, faFolder, faFolders, faPlusCircle);
+import { faPlusCircle, faPlus } from "@fortawesome/pro-light-svg-icons";
+library.add(fas, faCabinetFiling, faFolder, faFolders, faPlusCircle, faPlus);
 
 export const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -101,5 +101,5 @@ export const icon = {
   times: <FontAwesomeIcon icon={"times"} />,
   see: <FontAwesomeIcon icon={"eye"} />,
   unsee: <FontAwesomeIcon icon={"eye-slash"} />,
-  upload: <FontAwesomeIcon icon={"file-upload"} />,
+  upload: <FontAwesomeIcon icon={"paperclip"} />,
 };

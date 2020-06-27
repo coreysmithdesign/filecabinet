@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../redux/reducer";
-import { useHistory } from "react-router";
+import { useHistory, NavLink } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -18,9 +18,15 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 0 1rem;
-  flex: 0 0 50px;
+  flex: 0 0 65px;
   background: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   @media (min-width: ${size.md}) {
     flex: 0 0 65px;
   }
@@ -28,14 +34,21 @@ const Header = styled.header`
 
 const Nav = styled.nav`
   display: flex;
-  flex: 0 0 50px;
-  height: 50px;
+  flex: 0 0 65px;
+  height: 65px;
   justify-content: space-evenly;
+  align-items: center;
   order: 3;
   padding: 0;
   background: rgba(255, 255, 255, 0.1);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   @media (min-width: ${size.md}) {
     order: inherit;
     justify-content: inherit;
@@ -49,7 +62,7 @@ const Nav = styled.nav`
   }
 `;
 
-const NavLink = styled(Link)`
+const DrawerLink = styled(NavLink)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,6 +71,10 @@ const NavLink = styled(Link)`
   padding: 0.5rem;
   width: 100%;
   color: ${color.text};
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  font-weight: 600;
+
   :hover {
     text-decoration: none;
     color: ${color.text};
@@ -68,8 +85,13 @@ const NavLink = styled(Link)`
   }
   @media (min-width: ${size.md}) {
     display: inline-block;
-    margin-right: 1rem;
-    font-size: 1rem;
+    font-size: 0.875rem;
+    border-radius: 0;
+    padding: 0.25rem 0.5rem;
+    border-bottom: 1px solid transparent;
+    &.active {
+      border-bottom: 1px solid #dc95a4;
+    }
   }
 `;
 
@@ -84,19 +106,35 @@ const ShortcutDropdown = styled.div`
   position: absolute;
   width: 100%;
   height: auto;
-  top: 50px;
+  top: 30px;
   right: 0;
   background: white;
   padding: 0.5rem 0;
+  font-weight: 600;
+  font-size: 0.875rem;
   @media (min-width: ${size.lg}) {
     width: 300px;
-    top: 40px;
+    right: -6px;
     border-radius: 4px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);
+    :before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -5px;
+      right: 6px;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid white;
+    }
   }
 `;
 
 const ShortcutButton = styled.button`
+  all: unset;
   font-weight: 100;
   font-size: 1.5rem;
   text-decoration: none;
@@ -175,7 +213,7 @@ const Logo = styled(Link)`
     color: #444;
   }
   @media (min-width: ${size.md}) {
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    /* border-right: 1px solid rgba(0, 0, 0, 0.05); */
   }
   @media (min-width: ${size.lg}) {
     font-size: 1.35rem;
@@ -260,15 +298,15 @@ export default function Layout(props) {
         </ShortcutGroup>
       </Header>
       <Nav>
-        <NavLink to="/documents" title="Go to documents">
+        <DrawerLink to="/documents" title="Go to documents">
           <NavIcon>{icon.files}</NavIcon>Documents
-        </NavLink>
-        <NavLink to="/employees" title="Go to employees">
+        </DrawerLink>
+        <DrawerLink to="/employees" title="Go to employees">
           <NavIcon>{icon.folders}</NavIcon>Employees
-        </NavLink>
-        <NavLink to="/businesses" title="Go to businesses">
+        </DrawerLink>
+        <DrawerLink to="/businesses" title="Go to businesses">
           <NavIcon>{icon.folders}</NavIcon>Businesses
-        </NavLink>
+        </DrawerLink>
       </Nav>
       <Content>{props.children}</Content>
     </LayoutGroup>

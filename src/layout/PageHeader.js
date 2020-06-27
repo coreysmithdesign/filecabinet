@@ -18,8 +18,14 @@ const PageHeaderGroup = styled.div`
 const PageTitle = styled.h2`
   color: white;
   font-size: 1.2rem;
-  font-weight: 400;
-  margin: 0 0 0.5rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   @media (min-width: ${size.lg}) {
     margin: 0;
   }
@@ -28,7 +34,7 @@ const PageTitle = styled.h2`
 const PageLink = styled(Link)`
   color: #ee5960;
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 600;
   text-decoration: none;
   :hover {
     color: white;

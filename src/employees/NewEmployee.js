@@ -49,11 +49,51 @@ class New extends Component {
 
   handleSubmit(e, id) {
     e.preventDefault();
-    const { title, img, content } = this.state;
+    const {
+      employee_name,
+      address,
+      birth_date,
+      citizenship,
+      current_wage,
+      date_of_hire,
+      date_of_separation,
+      department,
+      drivers_license_expire_date,
+      drivers_license_number,
+      drivers_license_state,
+      email,
+      employment_status,
+      irs_allowances,
+      irs_marital_status,
+      irs_withheld,
+      phone,
+      position,
+      pto_level,
+    } = this.state;
     axios
-      .post(`/api/post/${id}`, { title, img, content })
+      .post(`/api/employees`, {
+        employee_name,
+        address,
+        birth_date,
+        citizenship,
+        current_wage,
+        date_of_hire,
+        date_of_separation,
+        department,
+        drivers_license_expire_date,
+        drivers_license_number,
+        drivers_license_state,
+        email,
+        employment_status,
+        irs_allowances,
+        irs_marital_status,
+        irs_withheld,
+        phone,
+        position,
+        pto_level,
+      })
       .then((res) => {
-        this.props.history.push("/dashboard");
+        this.props.history.push("/employees");
       })
       .catch((err) => {
         alert("Could not post");
@@ -164,7 +204,7 @@ class New extends Component {
 
               <FormSection>Driver Status</FormSection>
               <Label htmlFor="drivers_license_number">
-                drivers_license_numbers
+                Driver's Licence Number
               </Label>
               <Input
                 type="text"
@@ -173,7 +213,7 @@ class New extends Component {
                 onChange={(e) => this.handleChange(e)}
               />
               <Label htmlFor="drivers_license_state">
-                drivers_license_state
+                Driver's License State
               </Label>
               <Input
                 type="text"
@@ -190,7 +230,7 @@ class New extends Component {
                 value={citizenship}
                 onChange={(e) => this.handleChange(e)}
               />
-              <Label htmlFor="irs_marital_status">Status</Label>
+              <Label htmlFor="irs_marital_status">Marital Status</Label>
               <Input
                 type="text"
                 name="irs_marital_status"

@@ -21,23 +21,6 @@ import {
   Option,
 } from "../global/Form";
 
-const DropzoneArea = styled.div`
-  border: 1px dashed #dddddd;
-  background-color: #ebebf0;
-  padding: 1rem 0;
-  text-align: center;
-  border-radius: 4px;
-  font-size: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const DropzoneInstruction = styled.span`
-  font-size: 1rem;
-  margin-top: 0.5rem;
-`;
-
 class Document extends Component {
   constructor(props) {
     super(props);
@@ -277,5 +260,22 @@ class Document extends Component {
     );
   }
 }
+
+const DropzoneArea = styled.div`
+  border: 1px dashed #dddddd;
+  background-color: #ebebf0;
+  padding: 1rem 0;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const DropzoneInstruction = styled.span`
+  font-size: 1rem;
+  margin-top: 0.5rem;
+`;
 
 export default Document;

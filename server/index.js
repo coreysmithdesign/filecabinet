@@ -6,6 +6,7 @@ const authCtrl = require("./controllers/authentication");
 const documentCtrl = require("./controllers/documents");
 const employeeCtrl = require("./controllers/employees");
 const businessCtrl = require("./controllers/businesses");
+const path = require("path");
 const {
   SERVER_PORT,
   SESSION_SECRET,
@@ -92,6 +93,12 @@ app.post("/api/businesses", businessCtrl.add);
 app.get("/api/business/:id", businessCtrl.view);
 app.put("/api/business/:id", businessCtrl.update);
 app.delete("/api/business/:id", businessCtrl.delete);
+
+app.use(express.static(__dirname + "/../build"));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 // database connection - massive
 massive({

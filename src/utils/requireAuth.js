@@ -1,16 +1,18 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 export default function (ComposedComponent) {
   class Authenticate extends React.Component {
-    componentDidMount() {
-      if (!this.props.isLoggedIn) {
-        // this.props.history.push("/login");
-      }
-    }
-
     render() {
-      return <ComposedComponent {...this.props} />;
+      console.log(this.props);
+      if (this.props.isLoading) {
+        return <p>Loading...</p>;
+      } else if (!this.props.isLoading && !this.props.isLoggedIn) {
+        return <Redirect to="/login" />;
+      } else {
+        return <ComposedComponent {...this.props} />;
+      }
     }
   }
 

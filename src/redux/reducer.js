@@ -2,6 +2,7 @@ import axios from "axios";
 
 const initialState = {
   user: {},
+  isLoading: true,
   isLoggedIn: false,
 };
 
@@ -43,11 +44,16 @@ export default function (state = initialState, action) {
     case LOGOUT_USER:
       return { ...state, ...action.payload };
     case GET_USER + "_PENDING":
-      return state;
-    case GET_USER + "_FULLFILLED":
-      return { ...state, ...action.payload.data, isLoggedIn: true };
+      return { ...state, isLoading: true };
+    case GET_USER + "_FULFILLED":
+      return {
+        ...state,
+        ...action.payload.data,
+        isLoggedIn: true,
+        isLoading: false,
+      };
     case GET_USER + "_REJECTED":
-      return initialState;
+      return { ...state, isLoading: false };
     default:
       return initialState;
   }

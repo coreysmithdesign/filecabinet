@@ -77,7 +77,7 @@ const DrawerLink = styled(NavLink)`
 
   :hover {
     text-decoration: none;
-    color: ${color.text};
+    color: #dd3643;
   }
   :visited {
     text-decoration: none;
@@ -90,7 +90,7 @@ const DrawerLink = styled(NavLink)`
     padding: 0.25rem 0.5rem;
     border-bottom: 1px solid transparent;
     &.active {
-      border-bottom: 1px solid #dc95a4;
+      color: #dd3643;
     }
   }
 `;

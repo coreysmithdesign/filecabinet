@@ -9,7 +9,7 @@ import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
 import PageAside from "../layout/PageAside";
-import { icon } from "../global/Interface";
+import { icon } from "../global/globals";
 import { Card } from "../global/Card";
 import {
   Form,

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { color } from "./Interface";
+import { color } from "./globals";
 
 export const Table = styled.div`
   width: 100%;

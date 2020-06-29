@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUser } from "./redux/reducer";
-import { GlobalStyle } from "./global/Interface";
+import { GlobalStyle } from "./global/globals";
 import routes from "./routes";
 
 class App extends Component {

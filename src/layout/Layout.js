@@ -5,7 +5,7 @@ import { useHistory, NavLink } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { icon, size, color } from "../global/Interface";
+import { icon, size, color } from "../global/globals";
 
 const LayoutGroup = styled.div`
   display: flex;

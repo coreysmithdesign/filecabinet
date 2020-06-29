@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { size } from "../global/Interface";
+import { size } from "../global/globals";
 import { Link } from "react-router-dom";
 
 const PageHeaderGroup = styled.div`

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/reducer";
 import Layout from "./layout/Layout";
 import { Form, Label, Input, Submit } from "../global/Form";
-import { icon } from "../global/Interface";
+import { icon } from "../global/globals";
 
 export default function Login(props) {
   const [username, setName] = useState("");

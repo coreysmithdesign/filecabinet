@@ -8,6 +8,5 @@ insert into businesses (
   $2,
   $3,
   $4
-);
-
-select * from businesses;
+)
+returning *;

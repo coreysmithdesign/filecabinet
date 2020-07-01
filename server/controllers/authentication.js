@@ -43,8 +43,12 @@ module.exports = {
       const authenticated = bcrypt.compareSync(password, user[0].password);
       if (authenticated) {
         req.session.user = {
-          user_id: user[0].id,
+          user_id: user[0].user_id,
           username: user[0].username,
+          full_name: user[0].full_name,
+          bussiness_name: user[0].bussiness_name,
+          settings: user[0].settings,
+          email: user[0].email,
           avatar: user[0].avatar,
         };
         res.status(200).send(req.session.user);
@@ -60,6 +64,14 @@ module.exports = {
     } else {
       res.sendStatus(404);
     }
+  },
+
+  view_user: async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+    const db = req.app.get("db");
+    const loggedInUser = await db.user_view([id]);
+    res.status(200).send(loggedInUser[0]);
   },
 
   logout: (req, res) => {

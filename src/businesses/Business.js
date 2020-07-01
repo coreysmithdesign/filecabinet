@@ -5,28 +5,54 @@ import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
 import PageAside from "../layout/PageAside";
-import { Card, CardTitle, CardLabel, CardInfo } from "../global/Card";
+import { Card } from "../global/Card";
 import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
+import { Form, Label, Input, Submit } from "../global/Form";
 
 class Business extends Component {
   constructor() {
     super();
 
     this.state = {
-      business: {},
+      business_name: "",
+      phone: "",
+      address: "",
     };
   }
 
   componentDidMount() {
-    this.getBusiness();
-  }
-
-  getBusiness() {
     axios.get(`/api/business/${this.props.match.params.id}`).then((res) => {
+      const { business_name, phone, address } = res.data[0];
       this.setState({
-        business: res.data[0],
+        business_name: business_name,
+        phone: phone,
+        address: address,
       });
     });
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const { business_name, phone, address } = this.state;
+    axios
+      .put(`/api/business/${this.props.match.params.id}`, {
+        business_name,
+        phone,
+        address,
+      })
+      .then((res) => {
+        console.log("success");
+      })
+      .catch((err) => {
+        alert("Could not post");
+        console.log(err);
+      });
   }
 
   handleDelete(e) {
@@ -45,21 +71,46 @@ class Business extends Component {
 
   render() {
     console.log(this.state);
-    const { business_name, phone, address } = this.state.business;
+    const { business_name, phone, address } = this.state;
 
     return (
       <Layout>
-        <PageHeader title="Businesses" link="/businesses"></PageHeader>
+        <PageHeader
+          title="Businesses"
+          link="/businesses"
+          page={business_name}
+        ></PageHeader>
         <PageContent>
           <PageAside>
             <Card>
-              <CardTitle>{business_name}</CardTitle>
-              <CardLabel>Phone</CardLabel>
-              <CardInfo>{phone}</CardInfo>
-              <CardLabel>Address</CardLabel>
-              <CardInfo>{address}</CardInfo>
+              <Form onSubmit={(e) => this.handleSubmit(e)}>
+                <Label htmlFor="business_name">Business Name</Label>
+                <Input
+                  type="text"
+                  name="business_name"
+                  value={business_name}
+                  onChange={(e) => this.handleChange(e)}
+                />
+
+                <Label htmlFor="phone">Phone</Label>
+                <Input
+                  type="text"
+                  name="phone"
+                  value={phone}
+                  onChange={(e) => this.handleChange(e)}
+                />
+
+                <Label htmlFor="address">Address</Label>
+                <Input
+                  type="text"
+                  name="address"
+                  value={address}
+                  onChange={(e) => this.handleChange(e)}
+                />
+                <Submit type="submit" value="Submit" />
+              </Form>
+              <button onClick={(e) => this.handleDelete(e)}>Delete</button>
             </Card>
-            <button onClick={(e) => this.handleDelete(e)}>Delete</button>
           </PageAside>
           <PageMain>
             <Table>

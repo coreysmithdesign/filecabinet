@@ -8,8 +8,13 @@ module.exports = {
   add: async (req, res) => {
     const { user_id, business_name, phone, address } = req.body;
     const db = req.app.get("db");
-    await db.business_add([user_id, business_name, phone, address]);
-    res.status(200).send(`Added new business "${business_name}"`);
+    const newBusiness = await db.business_add([
+      user_id,
+      business_name,
+      phone,
+      address,
+    ]);
+    res.status(200).send(newBusiness[0]);
   },
 
   view: async (req, res) => {

@@ -18,7 +18,7 @@ const PageHeaderGroup = styled.div`
 const PageTitle = styled.h2`
   color: white;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0 0 1rem;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -34,14 +34,32 @@ const PageTitle = styled.h2`
 const PageLink = styled(Link)`
   color: #ee5960;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 400;
   text-decoration: none;
+  display: inline;
   :hover {
     color: white;
   }
   :visited {
     text-decoration: none;
     color: #ee5960;
+  }
+`;
+
+const Page = styled.span`
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0 0 1rem;
+  display: inline;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @media (min-width: ${size.lg}) {
+    margin: 0;
   }
 `;
 
@@ -54,7 +72,10 @@ export default function PageHeader(props) {
     <PageHeaderGroup>
       <PageTitle>
         {props.link ? (
-          <PageLink to={`${props.link}`}>{props.title}</PageLink>
+          <>
+            <PageLink to={`${props.link}`}>{props.title}</PageLink>
+            <Page> / {props.page}</Page>
+          </>
         ) : (
           props.title
         )}

@@ -181,7 +181,11 @@ class Document extends Component {
 
     return (
       <Layout>
-        <PageHeader title="Documents" link="/documents"></PageHeader>
+        <PageHeader
+          title="Documents"
+          link="/documents"
+          page={document_name}
+        ></PageHeader>
         <PageContent>
           <PageAside>
             <Card>

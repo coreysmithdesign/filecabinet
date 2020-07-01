@@ -142,6 +142,7 @@ const ShortcutButton = styled.button`
   color: ${color.text};
   margin-left: 1rem;
   :hover {
+    cursor: pointer;
     color: ${color.text};
   }
   :visited {
@@ -159,7 +160,7 @@ const ShortcutLink = styled(Link)`
     color: #555;
   }
   :hover {
-    background: #29303b;
+    background: #626a78;
     color: #fff;
     text-decoration: none;
   }
@@ -178,7 +179,7 @@ const ShortcutLogout = styled.a`
     color: #555;
   }
   :hover {
-    background: #29303b;
+    background: #626a78;
     color: #fff;
     text-decoration: none;
   }
@@ -204,7 +205,6 @@ const Logo = styled(Link)`
   color: #444;
   font-size: 1rem;
   font-weight: 800;
-  color: white;
   :visited {
     color: #444;
   }
@@ -266,7 +266,7 @@ export default function Layout(props) {
 
         <ShortcutGroup>
           <ShortcutButton
-            title="Add a new item asdf"
+            title="Add a new item"
             onClick={() => setRevealNew((revealNew) => !revealNew)}
           >
             {icon.add} {icon.caret_down}

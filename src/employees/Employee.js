@@ -5,7 +5,7 @@ import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
 import PageAside from "../layout/PageAside";
-import { Card, CardTitle } from "../global/Card";
+import { Card } from "../global/Card";
 import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 import {
   Form,
@@ -108,11 +108,43 @@ class Employee extends Component {
 
   handleSubmit(e, id) {
     e.preventDefault();
-    const { title, img, content } = this.state;
+    const {
+      employee_name,
+      position,
+      department,
+      employment_status,
+      current_wage,
+      pto_level,
+      citizenship,
+      drivers_license_number,
+      drivers_license_state,
+      phone,
+      email,
+      address,
+      irs_marital_status,
+      irs_allowances,
+      irs_withheld,
+    } = this.state;
     axios
-      .post(`/api/post/${id}`, { title, img, content })
+      .put(`/api/employee/${this.props.match.params.id}`, {
+        employee_name,
+        position,
+        department,
+        employment_status,
+        current_wage,
+        pto_level,
+        citizenship,
+        drivers_license_number,
+        drivers_license_state,
+        phone,
+        email,
+        address,
+        irs_marital_status,
+        irs_allowances,
+        irs_withheld,
+      })
       .then((res) => {
-        this.props.history.push("/dashboard");
+        console.log("employee updated");
       })
       .catch((err) => {
         alert("Could not post");
@@ -169,13 +201,14 @@ class Employee extends Component {
 
     return (
       <Layout>
-        <PageHeader title="Employees" link="/employees"></PageHeader>
+        <PageHeader
+          title="Employees"
+          link="/employees"
+          page={employee_name}
+        ></PageHeader>
         <PageContent>
           <PageAside>
             <Card>
-              <CardTitle>
-                {employee_name} ({employment_status})
-              </CardTitle>
               <Form onSubmit={(e) => this.handleSubmit(e)}>
                 <FormSection>Contact</FormSection>
                 <Label htmlFor="employee_name">Name</Label>

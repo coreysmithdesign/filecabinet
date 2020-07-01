@@ -4,7 +4,6 @@ import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
-import Search from "../global/Search";
 import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 
 class Documents extends Component {
@@ -43,9 +42,7 @@ class Documents extends Component {
 
     return (
       <Layout>
-        <PageHeader title="Documents">
-          <Search />
-        </PageHeader>
+        <PageHeader title="Documents"></PageHeader>
         <PageContent>
           <PageMain>
             <Table>

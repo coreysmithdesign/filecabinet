@@ -18,7 +18,7 @@ const Cover = styled.div`
 `;
 
 const Box = styled.div`
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.75);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@ export default function Welcome() {
       <Cover>
         <Box>
           <Lead>Don't get up.</Lead>
-          <Kicker>These files come to you.</Kicker>
+          <Kicker>Your files are here.</Kicker>
           <CTA to="/login">{icon.key} Log In</CTA>
         </Box>
       </Cover>

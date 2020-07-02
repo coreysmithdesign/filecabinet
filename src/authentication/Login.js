@@ -52,7 +52,7 @@ export default function Login(props) {
           value={password}
           onChange={(e) => setPass(e.target.value)}
         />
-        <Submit type="submit" value="Submit" />
+        <Submit type="submit" value="Login" />
       </Form>
     </Layout>
   );

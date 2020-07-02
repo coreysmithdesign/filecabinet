@@ -71,7 +71,7 @@ export default function Register(props) {
           value={business_name}
           onChange={(e) => setBusinessName(e.target.value)}
         />
-        <Submit type="submit" value="Submit" />
+        <Submit type="submit" value="Register" />
       </Form>
     </Layout>
   );

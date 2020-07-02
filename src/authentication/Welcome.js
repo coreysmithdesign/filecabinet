@@ -3,9 +3,10 @@ import styled from "styled-components";
 import Layout from "./layout/Layout";
 import { icon } from "../global/globals";
 import { Link } from "react-router-dom";
+import CoverPhoto from "../cover.jpg";
 
 const Cover = styled.div`
-  background-image: url("https://www.homebarnshop.co.uk/wp-content/uploads/2016/05/Vintage-Industrial-Steel-Filing-Cabinets.jpg");
+  background-image: url(${CoverPhoto});
   background-position: center;
   background-size: cover;
   background-repeat: no-reapeat;
@@ -14,6 +15,13 @@ const Cover = styled.div`
   height: 100vh;
   text-align: center;
   justify-content: center;
+`;
+
+const Box = styled.div`
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Lead = styled.h1`
@@ -27,7 +35,8 @@ const Kicker = styled.h2`
 `;
 
 const CTA = styled(Link)`
-  background: #ddd;
+  background: #dd3643;
+  color: white;
   padding: 0.75rem 1rem;
   border-radius: 8px;
   text-decoration: none;
@@ -36,9 +45,11 @@ const CTA = styled(Link)`
   margin: 0.5rem auto;
   font-weight: bold;
   :hover {
+    color: white;
     text-decoration: none;
   }
   :visited {
+    color: white;
     text-decoration: none;
   }
 `;
@@ -47,9 +58,11 @@ export default function Welcome() {
   return (
     <Layout>
       <Cover>
-        <Lead>Don't get up.</Lead>
-        <Kicker>These files come to you.</Kicker>
-        <CTA to="/register">{icon.key} Get Your Key</CTA>
+        <Box>
+          <Lead>Don't get up.</Lead>
+          <Kicker>These files come to you.</Kicker>
+          <CTA to="/register">{icon.key} Log In</CTA>
+        </Box>
       </Cover>
     </Layout>
   );

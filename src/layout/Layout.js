@@ -106,18 +106,19 @@ const ShortcutDropdown = styled.div`
   position: absolute;
   width: 100%;
   height: auto;
-  top: 30px;
+  top: 65px;
   right: 0;
   background: white;
   padding: 0.5rem 0;
   font-weight: 600;
   font-size: 0.875rem;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);
   @media (min-width: ${size.lg}) {
     width: 300px;
     right: -6px;
+    top: 30px;
     border-radius: 4px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);
     :before {
       content: "";
       display: block;
@@ -308,7 +309,7 @@ export default function Layout(props) {
           <NavIcon>{icon.folders}</NavIcon>Businesses
         </DrawerLink>
       </Nav>
-      <Content>{props.children}</Content>
+      <Content className="content">{props.children}</Content>
     </LayoutGroup>
   );
 }

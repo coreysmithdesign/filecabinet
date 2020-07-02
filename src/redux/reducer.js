@@ -48,7 +48,7 @@ export default function (state = initialState, action) {
     case GET_USER + "_FULFILLED":
       return {
         ...state,
-        ...action.payload.data,
+        user: action.payload.data,
         isLoggedIn: true,
         isLoading: false,
       };

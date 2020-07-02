@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
+import { icon } from "../global/globals";
 import {
   Form,
   FormSection,
@@ -123,7 +124,10 @@ class New extends Component {
 
     return (
       <Layout>
-        <PageHeader title="Add a New Employee"></PageHeader>
+        <PageHeader
+          icon={icon.folderadd}
+          title="Add a New Employee"
+        ></PageHeader>
         <PageContent>
           <PageMain>
             <Form onSubmit={(e) => this.handleSubmit(e)}>
@@ -186,7 +190,7 @@ class New extends Component {
                 value={employment_status}
                 onChange={(e) => this.handleChange(e)}
               >
-                <Option>select one</Option>
+                <Option>Select</Option>
                 <Option>Full-time</Option>
                 <Option>Part-time</Option>
                 <Option>Seasonal</Option>
@@ -252,7 +256,7 @@ class New extends Component {
                 onChange={(e) => this.handleChange(e)}
               />
 
-              <Submit type="submit" value="Submit" />
+              <Submit type="submit" value="Add Employee" />
             </Form>
           </PageMain>
         </PageContent>

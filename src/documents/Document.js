@@ -32,7 +32,8 @@ class Document extends Component {
       employee_id: "",
       employee_name: "",
       isUploading: false,
-      url: "http://via.placeholder.com/450x450",
+      url: "",
+      isToggled: false,
     };
   }
 
@@ -169,6 +170,12 @@ class Document extends Component {
       });
   }
 
+  handleToggle() {
+    this.setState({
+      isToggled: !this.state.isToggled,
+    });
+  }
+
   render() {
     console.log(this.state);
     const { document_name, note, employee_id, url, isUploading } = this.state;
@@ -182,12 +189,16 @@ class Document extends Component {
     return (
       <Layout>
         <PageHeader
+          icon={icon.file}
           title="Documents"
           link="/documents"
           page={document_name}
         ></PageHeader>
         <PageContent>
-          <PageAside>
+          <ToggleForm onClick={() => this.handleToggle()}>
+            {icon.form}
+          </ToggleForm>
+          <PageAside viewing={this.state.isToggled}>
             <Card>
               <Dropzone onDrop={this.getSignedRequest}>
                 {({ getRootProps, getInputProps }) => (
@@ -243,12 +254,12 @@ class Document extends Component {
                   {note}
                 </TextArea>
 
-                <Submit type="submit" value="Submit" />
+                <Submit type="submit" value="Update" />
               </Form>
               <button onClick={(e) => this.handleDelete(e)}>Delete</button>
             </Card>
           </PageAside>
-          <PageMain>
+          <PageMain viewing={this.state.isToggled}>
             <iframe
               id="fred"
               title="PDF in an i-Frame"
@@ -280,6 +291,28 @@ const DropzoneArea = styled.div`
 const DropzoneInstruction = styled.span`
   font-size: 1rem;
   margin-top: 0.5rem;
+`;
+
+const ToggleForm = styled.button`
+  all: unset;
+  position: absolute;
+  bottom: 80px;
+  left: 10px;
+  background: white;
+  border-radius: 100%;
+  padding: 1rem;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  :hover {
+    cursor: pointer;
+  }
+  @media (min-width: 750px) {
+    display: none;
+  }
 `;
 
 export default Document;

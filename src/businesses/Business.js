@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import styled from "styled-components";
 import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
 import PageAside from "../layout/PageAside";
+import { icon } from "../global/globals";
 import { Card } from "../global/Card";
 import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 import { Form, Label, Input, Submit } from "../global/Form";
@@ -17,6 +19,7 @@ class Business extends Component {
       business_name: "",
       phone: "",
       address: "",
+      isToggled: false,
     };
   }
 
@@ -69,6 +72,12 @@ class Business extends Component {
       });
   }
 
+  handleToggle() {
+    this.setState({
+      isToggled: !this.state.isToggled,
+    });
+  }
+
   render() {
     console.log(this.state);
     const { business_name, phone, address } = this.state;
@@ -76,12 +85,16 @@ class Business extends Component {
     return (
       <Layout>
         <PageHeader
+          icon={icon.folder}
           title="Businesses"
           link="/businesses"
           page={business_name}
         ></PageHeader>
         <PageContent>
-          <PageAside>
+          <ToggleForm onClick={() => this.handleToggle()}>
+            {icon.form}
+          </ToggleForm>
+          <PageAside viewing={this.state.isToggled}>
             <Card>
               <Form onSubmit={(e) => this.handleSubmit(e)}>
                 <Label htmlFor="business_name">Business Name</Label>
@@ -107,12 +120,12 @@ class Business extends Component {
                   value={address}
                   onChange={(e) => this.handleChange(e)}
                 />
-                <Submit type="submit" value="Submit" />
+                <Submit type="submit" value="Update" />
               </Form>
               <button onClick={(e) => this.handleDelete(e)}>Delete</button>
             </Card>
           </PageAside>
-          <PageMain>
+          <PageMain viewing={this.state.isToggled}>
             <Table>
               <TableHeader>
                 <TableCell>Date</TableCell>
@@ -145,5 +158,27 @@ class Business extends Component {
     );
   }
 }
+
+const ToggleForm = styled.button`
+  all: unset;
+  position: absolute;
+  bottom: 80px;
+  left: 10px;
+  background: white;
+  border-radius: 100%;
+  padding: 1rem;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  :hover {
+    cursor: pointer;
+  }
+  @media (min-width: 750px) {
+    display: none;
+  }
+`;
 
 export default Business;

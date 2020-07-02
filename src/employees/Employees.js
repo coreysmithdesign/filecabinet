@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
+import { icon } from "../global/globals";
 import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 
 class Employees extends Component {
@@ -34,7 +35,9 @@ class Employees extends Component {
         key={employee.employee_id}
         to={`/employees/${employee.employee_id}`}
       >
-        <TableCell>{employee.employee_name}</TableCell>
+        <TableCell>
+          {icon.folder} {employee.employee_name}
+        </TableCell>
         <TableCell>{employee.position}</TableCell>
         <TableCell>{employee.employment_status}</TableCell>
         <TableCell>{employee.current_wage}</TableCell>
@@ -43,7 +46,7 @@ class Employees extends Component {
 
     return (
       <Layout>
-        <PageHeader title="Employees"></PageHeader>
+        <PageHeader icon={icon.folders} title="Employees"></PageHeader>
         <PageContent>
           <PageMain>
             <Table>

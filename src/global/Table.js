@@ -74,6 +74,9 @@ export const TableRowLink = styled(Link)`
 `;
 
 export const TableCell = styled.span`
+  &&:first-of-type {
+    font-weight: bold;
+  }
   @media (min-width: 600px) {
     display: table-cell;
     padding: 0.5rem 1rem;

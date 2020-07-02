@@ -7,6 +7,7 @@ export const Form = styled.form`
   align-items: flex-start;
   max-width: 500px;
   margin: 0 auto 2rem;
+  padding: 0 1rem;
 `;
 
 export const FormSection = styled.p`

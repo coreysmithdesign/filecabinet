@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
+import { icon } from "../global/globals";
 import { Form, FormSection, Label, Input, Submit } from "../global/Form";
 
 class New extends Component {
@@ -43,7 +44,10 @@ class New extends Component {
     const { business_name, phone, address } = this.state;
     return (
       <Layout>
-        <PageHeader title="Add a New Business"></PageHeader>
+        <PageHeader
+          icon={icon.folderadd}
+          title="Add a New Business"
+        ></PageHeader>
         <PageContent>
           <PageMain>
             <Form onSubmit={(e) => this.handleSubmit(e)}>
@@ -69,7 +73,7 @@ class New extends Component {
                 value={address}
                 onChange={(e) => this.handleChange(e)}
               />
-              <Submit type="submit" value="Submit" />
+              <Submit type="submit" value="Add Business" />
             </Form>
           </PageMain>
         </PageContent>

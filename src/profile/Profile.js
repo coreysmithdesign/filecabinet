@@ -13,17 +13,20 @@ class Profile extends Component {
     super();
 
     this.state = {
+      username: "",
       full_name: "",
       email: "",
     };
   }
 
   componentDidMount() {
-    console.log("component did mount:", this.props.user_id);
-    axios.get(`/api/auth/user/${this.props.user_id}`).then((res) => {
+    console.log("component did mount:", this.props);
+    const { user_id } = this.props.user;
+    axios.get(`/api/auth/user/${user_id}`).then((res) => {
       console.log("axios user get response", res.data);
-      const { full_name, email } = res.data;
+      const { username, full_name, email } = res.data;
       this.setState({
+        username: username,
         full_name: full_name,
         email: email,
       });
@@ -37,10 +40,7 @@ class Profile extends Component {
   };
 
   render() {
-    console.log("profile state", this.state);
-    console.log("profile props", this.props);
-    const { full_name, email } = this.state;
-    const { username } = this.props;
+    const { username, full_name, email } = this.state;
     return (
       <Layout>
         <PageHeader title="Profile"></PageHeader>
@@ -49,13 +49,7 @@ class Profile extends Component {
             <Form>
               <FormSection>Profile Information</FormSection>
               <Label htmlFor="username">Username</Label>
-              <Input
-                disabled
-                type="text"
-                name="username"
-                value={username}
-                onChange={(e) => this.handleChange(e)}
-              />
+              <Input disabled type="text" name="username" value={username} />
               <Label htmlFor="full_name">Full Name</Label>
               <Input
                 type="text"

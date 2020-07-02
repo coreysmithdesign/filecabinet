@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
+import { icon } from "../global/globals";
 import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 
 class Documents extends Component {
@@ -34,7 +35,9 @@ class Documents extends Component {
         key={document.document_id}
         to={`/documents/${document.document_id}`}
       >
-        <TableCell>{document.document_name}</TableCell>
+        <TableCell>
+          {icon.file} {document.document_name}
+        </TableCell>
         <TableCell>{document.employee_name}</TableCell>
         <TableCell>{document.note}</TableCell>
       </TableRowLink>
@@ -42,14 +45,14 @@ class Documents extends Component {
 
     return (
       <Layout>
-        <PageHeader title="Documents"></PageHeader>
+        <PageHeader icon={icon.files} title="Documents"></PageHeader>
         <PageContent>
           <PageMain>
             <Table>
               <TableHeader>
-                <TableCell>Document</TableCell>
+                <TableCell>Document Title</TableCell>
                 <TableCell>Employee</TableCell>
-                <TableCell>Note</TableCell>
+                <TableCell>Notes</TableCell>
               </TableHeader>
               {documentList}
             </Table>

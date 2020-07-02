@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import axios from "axios";
 import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
@@ -6,6 +7,7 @@ import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
 import PageAside from "../layout/PageAside";
 import { Card } from "../global/Card";
+import { icon } from "../global/globals";
 import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 import {
   Form,
@@ -42,6 +44,7 @@ class Employee extends Component {
       position: "",
       pto_level: "",
       document_list: [],
+      isToggled: false,
     };
   }
 
@@ -166,6 +169,12 @@ class Employee extends Component {
       });
   }
 
+  handleToggle() {
+    this.setState({
+      isToggled: !this.state.isToggled,
+    });
+  }
+
   render() {
     console.log(this.state);
     const {
@@ -193,7 +202,6 @@ class Employee extends Component {
         key={document.document_id}
         to={`/documents/${document.document_id}`}
       >
-        <TableCell>{document.document_id}</TableCell>
         <TableCell>{document.document_name}</TableCell>
         <TableCell>{document.note}</TableCell>
       </TableRowLink>
@@ -202,12 +210,16 @@ class Employee extends Component {
     return (
       <Layout>
         <PageHeader
+          icon={icon.folder}
           title="Employees"
           link="/employees"
           page={employee_name}
         ></PageHeader>
         <PageContent>
-          <PageAside>
+          <ToggleForm onClick={() => this.handleToggle()}>
+            {icon.form}
+          </ToggleForm>
+          <PageAside viewing={this.state.isToggled}>
             <Card>
               <Form onSubmit={(e) => this.handleSubmit(e)}>
                 <FormSection>Contact</FormSection>
@@ -335,16 +347,15 @@ class Employee extends Component {
                   onChange={(e) => this.handleChange(e)}
                 />
 
-                <Submit type="submit" value="Submit" />
+                <Submit type="submit" value="Update" />
               </Form>
               <button onClick={(e) => this.handleDelete(e)}>Delete</button>
             </Card>
           </PageAside>
-          <PageMain>
+          <PageMain viewing={this.state.isToggled}>
             <Table>
               <TableHeader>
-                <TableCell>ID</TableCell>
-                <TableCell>Document</TableCell>
+                <TableCell>Document Name</TableCell>
                 <TableCell>Note</TableCell>
               </TableHeader>
               {documentList}
@@ -355,5 +366,27 @@ class Employee extends Component {
     );
   }
 }
+
+const ToggleForm = styled.button`
+  all: unset;
+  position: absolute;
+  bottom: 80px;
+  left: 10px;
+  background: white;
+  border-radius: 100%;
+  padding: 1rem;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  :hover {
+    cursor: pointer;
+  }
+  @media (min-width: 750px) {
+    display: none;
+  }
+`;
 
 export default Employee;

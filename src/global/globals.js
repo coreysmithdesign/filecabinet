@@ -8,9 +8,18 @@ import {
   faCabinetFiling,
   faFolder,
   faFolders,
+  faFilePlus,
 } from "@fortawesome/pro-solid-svg-icons";
 import { faPlusCircle, faPlus } from "@fortawesome/pro-light-svg-icons";
-library.add(fas, faCabinetFiling, faFolder, faFolders, faPlusCircle, faPlus);
+library.add(
+  fas,
+  faCabinetFiling,
+  faFolder,
+  faFolders,
+  faPlusCircle,
+  faPlus,
+  faFilePlus
+);
 
 export const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -93,13 +102,17 @@ export const icon = {
   key: <FontAwesomeIcon icon={"key"} />,
   file: <FontAwesomeIcon icon={"file"} />,
   files: <FontAwesomeIcon icon={"copy"} />,
+  fileadd: <FontAwesomeIcon icon={"file-plus"} />,
   folder: <FontAwesomeIcon icon={"folder"} />,
   folders: <FontAwesomeIcon icon={"folders"} />,
+  folderadd: <FontAwesomeIcon icon={"folder-plus"} />,
   chevron_left: <FontAwesomeIcon icon={"chevron-left"} />,
   caret_down: <FontAwesomeIcon icon={"caret-down"} />,
+  caret_right: <FontAwesomeIcon icon={"caret-right"} />,
   check: <FontAwesomeIcon icon={"check"} />,
   times: <FontAwesomeIcon icon={"times"} />,
   see: <FontAwesomeIcon icon={"eye"} />,
   unsee: <FontAwesomeIcon icon={"eye-slash"} />,
   upload: <FontAwesomeIcon icon={"paperclip"} />,
+  form: <FontAwesomeIcon icon={"align-justify"} />,
 };

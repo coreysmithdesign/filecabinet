@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+export default function PageAside(props) {
+  return <AsideGroup viewing={props.viewing}>{props.children}</AsideGroup>;
+}
+
 const AsideGroup = styled.aside`
-  flex: 0 0 100px;
+  display: ${(props) => (props.viewing ? "block" : "none")};
   overflow: auto;
   @media (min-width: 750px) {
+    display: block;
     border-right: 1px solid rgba(0, 0, 0, 0.25);
     flex: 0 0 340px;
   }
@@ -13,7 +18,3 @@ const AsideGroup = styled.aside`
     flex: 0 0 500px;
   }
 `;
-
-export default function PageAside(props) {
-  return <AsideGroup>{props.children}</AsideGroup>;
-}

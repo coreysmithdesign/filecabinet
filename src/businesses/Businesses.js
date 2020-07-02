@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
+import { icon } from "../global/globals";
 import { Table, TableHeader, TableRowLink, TableCell } from "../global/Table";
 
 class Businesses extends Component {
@@ -34,7 +35,9 @@ class Businesses extends Component {
         key={business.business_id}
         to={`/businesses/${business.business_id}`}
       >
-        <TableCell>{business.business_name}</TableCell>
+        <TableCell>
+          {icon.folder} {business.business_name}
+        </TableCell>
         <TableCell>{business.phone}</TableCell>
         <TableCell>{business.address}</TableCell>
       </TableRowLink>
@@ -42,7 +45,7 @@ class Businesses extends Component {
 
     return (
       <Layout>
-        <PageHeader title="Businesses"></PageHeader>
+        <PageHeader icon={icon.folders} title="Businesses"></PageHeader>
         <PageContent>
           <PageMain>
             <Table>

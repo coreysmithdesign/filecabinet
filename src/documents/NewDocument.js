@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import PageHeader from "../layout/PageHeader";
 import PageContent from "../layout/PageContent";
 import PageMain from "../layout/PageMain";
+import { icon } from "../global/globals";
 import {
   Form,
   FormSection,
@@ -78,18 +79,18 @@ class NewDocument extends Component {
 
     return (
       <Layout>
-        <PageHeader title="Add a New Document"></PageHeader>
+        <PageHeader icon={icon.fileadd} title="Add a New Document"></PageHeader>
         <PageContent>
           <PageMain>
             <Form onSubmit={(e) => this.handleSubmit(e)}>
               <FormSection>Document Information</FormSection>
-              <Label htmlFor="employee_id">Belongs To</Label>
+              <Label htmlFor="employee_id">Employee</Label>
               <Select
                 name="employee_id"
                 value={employee_id}
                 onChange={(e) => this.handleChangeSelect(e)}
               >
-                <Option key={0}>select</Option>
+                <Option key={0}>Select</Option>
                 {employeeList}
               </Select>
 
@@ -111,7 +112,7 @@ class NewDocument extends Component {
                 {note}
               </TextArea>
 
-              <Submit type="submit" value="Submit" />
+              <Submit type="submit" value="Add Document" />
             </Form>
           </PageMain>
         </PageContent>

@@ -1,12 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const MainGroup = styled.main`
-  flex: 1;
-  display: flex;
-  overflow: auto;
-`;
-
 export default function PageMain(props) {
-  return <MainGroup>{props.children}</MainGroup>;
+  return <MainGroup viewing={props.viewing}>{props.children}</MainGroup>;
 }
+
+const MainGroup = styled.main`
+  height: 100%;
+  display: ${(props) => (props.viewing ? "none" : "block")};
+  overflow: auto;
+  @media (min-width: 750px) {
+    display: flex;
+    flex: 1 1 auto;
+  }
+`;

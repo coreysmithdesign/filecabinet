@@ -61,7 +61,7 @@ export default function Welcome() {
         <Box>
           <Lead>Don't get up.</Lead>
           <Kicker>These files come to you.</Kicker>
-          <CTA to="/register">{icon.key} Log In</CTA>
+          <CTA to="/login">{icon.key} Log In</CTA>
         </Box>
       </Cover>
     </Layout>
